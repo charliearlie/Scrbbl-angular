@@ -1,0 +1,73 @@
+<div class="jumbotron">
+    <div class="container">
+
+        <div class="page-header" id="banner">
+            <div class="row">
+                <div class="col-lg-8 col-md-7 col-sm-6">
+                    <form class="form-horizontal" ng-disabled>
+                        <fieldset>
+
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-2 control-label" for="artistinput">Artist</label>
+                                <div class="col-md-8">
+                                    <input ng-model="track.songArtist" id="artistinput" name="artistinput" type="text" placeholder="" class="form-control input-md">
+
+                                </div>
+                            </div>
+
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-2 control-label" for="songinput">Song Title</label>
+                                <div class="col-md-8">
+                                    <input ng-model="track.songTitle" id="songinput" name="songinput" type="text" placeholder="" class="form-control input-md">
+
+                                </div>
+                            </div>
+
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-2 control-label" for="albuminput">Album Title</label>
+                                <div class="col-md-8">
+                                    <input ng-model="track.albumTitle" id="albuminput" name="albuminput" type="text" placeholder="" class="form-control input-md">
+
+                                </div>
+                            </div>
+
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-2 control-label" for="albumartistinput">Album Artist</label>
+                                <div class="col-md-8">
+                                    <input ng-model="track.albumArtist" id="albumartistinput" name="albumartistinput" type="text" placeholder="" class="form-control input-md">
+
+                                </div>
+                            </div>
+
+                            <!-- Button (Double) -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="scrobblebutton"></label>
+                                <div class="col-md-8" ng-if="user">
+                                    <button id="scrobblebutton" name="scrobblebutton" class="btn btn-success" ng-click="scrobble()">Scrobble</button>
+                                    <button id="clearbutton" ng-click="authenticate()" name="clearbutton" class="btn btn-danger">Clear</button>
+                                </div>
+                                <div class="col-md-8" ng-if="!user">
+                                    <button id="loginbutton" name="loginbutton" class="btn btn-danger" ng-click="authenticate()">Login with Last.FM</button>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </form>
+
+                    <h3> {{test2}} {{track.songArtist}}</h3>
+
+                    <div ng-repeat="post in posts">
+                        {{post}}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
