@@ -59,8 +59,8 @@ app.post('/api/scrobble', function(req, res, next) {
 	console.log(track);
 	var date = Math.floor((new Date()).getTime() / 1000) - 300;
 	if (track.datePlayed) {
-		date = Number(moment(track.datePlayed).format('X'));
-		date = date + _.random(1, 86000);
+		var douche = track.datePlayed.slice(0,10) + track.timePlayed.slice(10)
+		date = Number(moment(douche).format('X'));
 	}
 	console.log(date);
 	lastfm.track.scrobble({
