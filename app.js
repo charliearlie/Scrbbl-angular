@@ -9,7 +9,7 @@ angular.module('Scrbbl', ['ngCookies', 'ngResource', 'ngMessages', 'ngRoute', 'm
             })
             .when('/manual', {
                 templateUrl: 'public/views/manual.html',
-                controller: 'MainCtrl'
+                controller: 'ManualCtrl'
             })
             .otherwise({
                 redirectTo: '/'

@@ -8,7 +8,9 @@ var bcrypt = require('bcryptjs');
 var request = require('request');
 var xml2js = require('xml2js');
 var _ = require('lodash');
+var config = require('./config');
 var LastfmApi = require('lastfmapi');
+var moment = require('moment');
 
 var lastfm = new LastfmApi({
 	api_key : config.lastfm.key,
@@ -53,21 +55,32 @@ app.get('/api/auth/:token', function(req, res, next) {
 
 app.post('/api/scrobble', function(req, res, next) {
 	var track = req.body;
+	var status = {"success" : false};
 	console.log(track);
+	var date = Math.floor((new Date()).getTime() / 1000) - 300;
+	if (track.datePlayed) {
+		date = Number(moment(track.datePlayed).format('X'));
+	}
+	console.log(date);
 	lastfm.track.scrobble({
     	'artist' : track.songArtist,
     	'track' : track.songTitle,
-   	 	'timestamp' : Math.floor((new Date()).getTime() / 1000) - 300
+		'timestamp' : date
 
 	}, function (err, scrobbles) {
-    	if (err) { return console.log('We\'re in trouble', err); }
+    	if (err) {
+			return console.log('We\'re in trouble', err); 
+			return res.json(status.success); 
+		}
 
     	console.log('We have just scrobbled:', scrobbles);
+		status.success = true;
+		return res.json(status.success);
 	});
 });
 
 app.get('*', function(req, res) {
-  res.redirect(req.originalUrl);
+  res.sendFile(__dirname + '/index.html');
 });
 
 app.use(function(err, req, res, next) {
