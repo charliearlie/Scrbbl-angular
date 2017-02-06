@@ -60,6 +60,7 @@ app.post('/api/scrobble', function(req, res, next) {
 	var date = Math.floor((new Date()).getTime() / 1000) - 300;
 	if (track.datePlayed) {
 		date = Number(moment(track.datePlayed).format('X'));
+		date = date + _.random(1, 86000);
 	}
 	console.log(date);
 	lastfm.track.scrobble({
