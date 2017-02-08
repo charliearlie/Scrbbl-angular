@@ -11,6 +11,10 @@ angular.module('Scrbbl', ['ngCookies', 'ngResource', 'ngMessages', 'ngRoute', 'm
                 templateUrl: 'public/views/manual.html',
                 controller: 'ManualCtrl'
             })
+            .when('/scrobblealbum', {
+                templateUrl: 'public/views/scrobblealbum.html',
+                controller: 'ScrobbleAlbumCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });
