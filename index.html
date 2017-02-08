@@ -71,7 +71,7 @@
                     </i><span class="menu-title">Scrobble Manually</span></a>
 
                 </li>
-                <li><a href="UIElements.html"><i class="fa fa-book fa-fw">
+                <li data-match-route="/scrobblealbum"><a href="/scrobblealbum"><i class="fa fa-book fa-fw">
                         <div class="icon-bg bg-green"></div>
                     </i><span class="menu-title">Scrobble album</span></a>
 
@@ -136,9 +136,11 @@
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/lodash/dist/lodash.min.js"></script>
     <script src="app.js"></script>
     <script src="public/controllers/mainController.js"></script>
     <script src="public/controllers/manualController.js"></script>
+    <script src="public/controllers/albumController.js"></script>
     <script src="public/controllers/login.js"></script>
     <script src="public/services/authenticate.js"></script>
     <script src="public/services/scrobble.js"></script>
