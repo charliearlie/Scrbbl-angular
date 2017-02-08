@@ -3,6 +3,12 @@ angular.module('Scrbbl')
       return {
         scrobbleTrack: function(track) {
             return $http.post('/api/scrobble', track);
-        }
+        },
+        searchAlbum: function(album) {
+			return $http.post('/api/searchalbum', album);
+        },
+		scrobbleAlbum: function(album) {
+			return $http.post('/api/scrobblealbum', album);
+		}
     }
   }]);
