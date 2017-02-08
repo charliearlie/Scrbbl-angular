@@ -5944,3 +5944,9 @@ em {
 h1.main-header {
   text-align: center;
 }
+
+.result {
+  background-color: white;
+  margin-top:1px;
+  border: 1px solid black;
+}
