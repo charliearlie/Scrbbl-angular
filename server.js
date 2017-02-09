@@ -67,7 +67,8 @@ app.post('/api/scrobble', function (req, res, next) {
 	lastfm.track.scrobble({
 		'artist': track.songArtist,
 		'track': track.songTitle,
-		'timestamp': date
+		'timestamp': date,
+		'album': track.albumArtist 
 
 	}, function (err, scrobbles) {
 		if (err) {
@@ -120,13 +121,14 @@ app.post('/api/scrobblealbum', function (req, res, next) {
 			ret = JSON.parse(str);
 			var tracks = ret.album.tracks.track;
 
-			_.forEach(tracks, function (track) {
+			_.forEachRight(tracks, function (track) {
 				console.log(track);
 				time -= Number(track.duration);
 				lastfm.track.scrobble({
 					'artist': track.artist.name,
 					'track': track.name,
-					'timestamp': time
+					'timestamp': time,
+					'album': albumToScrobble.title
 
 				}, function (err, scrobbles) {
 					if (err) {

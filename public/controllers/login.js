@@ -16,4 +16,9 @@ angular.module('Scrbbl')
             console.log("clicked");
             Authenticate.login();
         };
+
+        $scope.logout = function() {
+            UserPersistence.clearCookieData();
+            location.reload();
+        }
     }]);
