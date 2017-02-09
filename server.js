@@ -85,8 +85,9 @@ app.post('/api/searchalbum', function (req, res, next) {
 	var albumDetails = req.body;
 	var str = '';
 	var ret;
-	http.get('http://ws.audioscrobbler.com/2.0/?method=album.search&album=' + albumDetails.title +
-		'&api_key=' + config.lastfm.key + '&format=json&limit=6', function (response) {
+	var uri = encodeURI('http://ws.audioscrobbler.com/2.0/?method=album.search&album=' + albumDetails.title +
+		'&api_key=' + config.lastfm.key + '&format=json&limit=6');
+	http.get(uri, function (response) {
 
 			response.on('data', function (chunk) {
 				str += chunk;
