@@ -1,5 +1,5 @@
 angular.module('Scrbbl')
-  .factory('Scrobble', ['$http', '$cookies', function ($http, $cookies) {
+  .factory('UserPersistence', ['$cookies', function ($cookies) {
     var userName = "";
     var authToken = "";
 
