@@ -16,4 +16,8 @@ angular.module('Scrbbl')
             $scope.track = {};
 
         };
+
+        $scope.$watch('track.artist', function() {
+            console.log($scope.track);
+        });
     }]);
