@@ -3,14 +3,12 @@ angular.module('Scrbbl')
     function($scope, $alert, Authenticate, $location, Scrobble) {
         $scope.scrobble = function() {
             Scrobble.searchAlbum($scope.album).then(function(result) {
-                //$scope.results = result.data;
                 $scope.results = _.map(result.data.results.albummatches.album, function(result) {
                     return {
                         title: result.name,
                         artist: result.artist
                     };
                 });
-                console.log($scope.results);
             });
         };
 

@@ -8,7 +8,7 @@
         <div class="page-header" id="banner">
             <div class="row">
                 <div class="col-lg-8 col-md-7 col-sm-6">
-                    <form class="form-horizontal" ng-disabled>
+                    <form class="form-horizontal" ng-if="!success && !loading">
                         <fieldset>
 
                             <!-- Text input-->
@@ -73,13 +73,13 @@
 
                         </fieldset>
                     </form>
-
-                    <h3> {{test2}} {{track.songArtist}}</h3>
-
-                    <div ng-repeat="post in posts">
-                        {{post}}
+                    <div ng-if="success">
+                        <h4 ng-if="success">Track scrobbled successfully</h4>
+                        <button id="scrobbleagainbutton" name="srobbleagainbutton" class="btn btn-success" ng-click="refreshForm()">Scrobble another</button>
                     </div>
-
+                    <div ng-if="loading">
+                        <img src="public/images/ring.svg" alt="Loading icon">
+                    </div>
                 </div>
             </div>
         </div>
