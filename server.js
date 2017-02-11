@@ -12,6 +12,7 @@ var config = require('./config');
 var LastfmApi = require('lastfmapi');
 var moment = require('moment');
 var http = require('http');
+var compress = require('compression');
 
 var lastfm = new LastfmApi({
 	api_key: config.lastfm.key,
@@ -23,6 +24,7 @@ var session = null;
 
 // view engine setup
 app.set('port', process.env.PORT || 3000);
+app.use(compress())
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
