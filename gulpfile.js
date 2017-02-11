@@ -8,9 +8,10 @@ var plumber = require('gulp-plumber');
 var templateCache = require('gulp-angular-templatecache');
 
 gulp.task('sass', function() {
-	gulp.src('public/stylesheets/style.scss')
+	gulp.src('public/stylesheets/main.scss')
     	.pipe(plumber())
     	.pipe(sass())
+		.pipe(csso())
     	.pipe(gulp.dest('public/stylesheets'));
 });
 
