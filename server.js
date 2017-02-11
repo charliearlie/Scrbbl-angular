@@ -18,7 +18,6 @@ var lastfm = new LastfmApi({
 	api_key: config.lastfm.key,
 	secret: config.lastfm.secret
 });
-
 var app = express();
 var session = null;
 
@@ -29,7 +28,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(__dirname));
+app.use(express.static(__dirname, {maxage : 86400000}));
 
 // var songSchema = new mongoose.Schema({
 // 	_id: Number,
@@ -54,6 +53,25 @@ app.get('/api/auth/:token', function (req, res, next) {
 			return res.json(session);
 		});
 	}
+});
+
+app.get('/api/radio/getstationplays/:station', function(req, res, next) {
+	var station = req.params.station;
+	var str = '';
+	var uri = encodeURI(config.lastfm.hostname + '?method=user.getrecenttracks&user=' + station + 
+		'&api_key=' + config.lastfm.key + '&format=json');
+	http.get(uri, function (response) {
+
+			response.on('data', function (chunk) {
+				str += chunk;
+			});
+			response.on('end', function () {
+				console.log(str);
+				ret = JSON.parse(str);
+				res.json(ret);
+			});
+		});
+	console.log(station);
 });
 
 app.post('/api/scrobble', function (req, res, next) {
@@ -145,7 +163,9 @@ app.post('/api/scrobblealbum', function (req, res, next) {
 	});
 });
 
+
 app.get('*', function (req, res) {
+	console.log("Hit this function again");
 	res.sendFile(__dirname + '/index.html');
 });
 

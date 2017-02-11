@@ -9,10 +9,19 @@
 
                             <!-- Text input-->
                             <div class="form-group">
-                                <label class="col-md-2 control-label" for="songinput">Radio station</label>
+                                <label class="col-md-2 control-label" for="songinput">Station</label>
                                 <div class="col-md-8">
-                                    <select style="width: 80%" ng-model="selectedStation" ng-options="x.station for x in stations"></select>
+                                    <select style="width: 80%" ng-change="getStationPlays()"ng-model="selectedStation" 
+                                                    ng-options="x.lastfmName as x.station for x in stations"></select>
 
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-8" ng-if="user">
+                                    <button id="radiobutton" name="radiobutton" class="btn btn-primary" ng-click="getStationPlays()">Display recent tracks</button>
+                                </div>
+                                <div class="col-md-8" ng-if="!user">
+                                    <button id="loginbutton" name="loginbutton" class="btn btn-danger" ng-click="authenticate()">Login with Last.FM</button>
                                 </div>
                             </div>
 
