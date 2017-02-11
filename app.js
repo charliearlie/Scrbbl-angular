@@ -1,5 +1,6 @@
-angular.module('Scrbbl', ['ngCookies', 'ngResource', 'ngMessages', 'ngRoute', 'mgcrea.ngStrap'])
-    .config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
+var app = angular.module('Scrbbl', ['ngCookies', 'ngResource', 'ngMessages', 'ngRoute', 'mgcrea.ngStrap']);
+
+app.config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
         $locationProvider.html5Mode(true);
 
         $routeProvider
@@ -14,6 +15,10 @@ angular.module('Scrbbl', ['ngCookies', 'ngResource', 'ngMessages', 'ngRoute', 'm
             .when('/scrobblealbum', {
                 templateUrl: 'public/views/scrobblealbum.html',
                 controller: 'ScrobbleAlbumCtrl'
+            })
+            .when('/scrobbleradio', {
+                templateUrl: 'public/views/scrobbleradio.html',
+                controller: 'RadioCtrl'
             })
             .otherwise({
                 redirectTo: '/'
