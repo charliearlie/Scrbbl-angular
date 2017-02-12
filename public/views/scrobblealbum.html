@@ -1,14 +1,10 @@
 <div class="jumbotron">
     <div class="container">
-        <div class="alert alert-success alert-dismissible" role="alert" ng-if="success">
-            <button type="button" ng-click="{{success = false}}" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <strong>Success</strong> - Track scrobbled successfully.
-        </div>
 
         <div class="page-header" id="banner">
             <div class="row">
                 <div class="col-lg-8 col-md-7 col-sm-6">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" ng-if="!success && !loading">
                         <fieldset>
 
                             <!-- Text input-->
@@ -23,16 +19,23 @@
                             <!-- Button (Double) -->
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="scrobblebutton"></label>
-                                <div class="col-md-8">
+                                <div class="col-md-8 buttonsubmit">
                                     <button id="scrobblebutton" name="scrobblebutton" class="btn btn-primary" ng-click="scrobble()">Search</button>
                                 </div>
-                                <div class="col-md-8" ng-if="!user">
+                                <div class="col-md-8 buttonsubmit" ng-if="!user">
                                     <button id="loginbutton" name="loginbutton" class="btn btn-danger" ng-click="authenticate()">Login with Last.FM</button>
                                 </div>
                             </div>
 
                         </fieldset>
                     </form>
+                    <div ng-if="success">
+                        <h4 ng-if="success">Album scrobbled successfully</h4>
+                        <button id="scrobbleagainbutton" name="srobbleagainbutton" class="btn btn-success" ng-click="refreshForm()">Scrobble another</button>
+                    </div>
+                    <div ng-if="loading">
+                        <div class="loader">Loading...</div>
+                    </div>
 
                 </div>
                 <div class="col-lg-4 col-md-5 col-sm-6">

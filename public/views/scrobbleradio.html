@@ -17,11 +17,11 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-md-8" ng-if="user">
-                                    <button id="radiobutton" name="radiobutton" class="btn btn-primary" ng-click="getStationPlays()">Display recent tracks</button>
+                                <div class="col-md-8 buttonsubmit" ng-if="user">
+                                    <button id="radiobutton" name="radiobutton" class="btn btn-primary formbutton" ng-click="getStationPlays()">Display recent tracks</button>
                                 </div>
-                                <div class="col-md-8" ng-if="!user">
-                                    <button id="loginbutton" name="loginbutton" class="btn btn-danger" ng-click="authenticate()">Login with Last.FM</button>
+                                <div class="col-md-8 buttonsubmit" ng-if="!user">
+                                    <button id="loginbutton" name="loginbutton" class="btn btn-danger formbutton" ng-click="authenticate()">Login with Last.FM</button>
                                 </div>
                             </div>
 

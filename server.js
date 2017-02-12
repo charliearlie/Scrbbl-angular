@@ -122,6 +122,7 @@ app.post('/api/searchalbum', function (req, res, next) {
 
 });
 
+//Need to return a success message somehow!
 app.post('/api/scrobblealbum', function (req, res, next) {
 	var status = { "success": false };
 	var albumToScrobble = req.body;
@@ -140,25 +141,9 @@ app.post('/api/scrobblealbum', function (req, res, next) {
 		response.on('end', function () {
 			ret = JSON.parse(str);
 			var tracks = ret.album.tracks.track;
-
-			_.forEachRight(tracks, function (track) {
-				console.log(track);
-				time -= Number(track.duration);
-				lastfm.track.scrobble({
-					'artist': track.artist.name,
-					'track': track.name,
-					'timestamp': time,
-					'album': albumToScrobble.title
-
-				}, function (err, scrobbles) {
-					if (err) {
-						return console.log('We\'re in trouble', err);
-					}
-
-					console.log('We have just scrobbled:', scrobbles);
-					status.success = true;
-				});
-			});
+			scrobbleAlbum(albumToScrobble, tracks);
+			res.json(true);
+			
 		});
 	});
 });
@@ -185,3 +170,26 @@ app.get('/:token', function (req, res) {
 app.listen(app.get('port'), function () {
 	console.log("Express server listening on port " + app.get('port'));
 });
+
+function scrobbleAlbum(albumToScrobble, tracks) {
+	let success = false;
+	var time = Math.floor((new Date()).getTime() / 1000) - 300;
+	_.forEachRight(tracks, function (track) {
+		console.log(track);
+		time -= Number(track.duration);
+		lastfm.track.scrobble({
+			'artist': track.artist.name,
+			'track': track.name,
+			'timestamp': time,
+			'album': albumToScrobble.title
+
+		}, function (err, scrobbles) {
+			if (err) {
+				return console.log('We\'re in trouble', err);
+			}
+
+			console.log('We have just scrobbled:', scrobbles);
+			success = true;
+		});
+	});
+}
