@@ -39,9 +39,15 @@
 
                 </div>
                 <div class="col-lg-4 col-md-5 col-sm-6">
-                    <div class="result" ng-repeat="result in results" ng-click="selectResult(result.title, result.artist)">
-                        <h5>{{result.title}}</h5>
-                        <p style="font-size:10px">{{result.artist}}</p>
+                    <div class="result col-lg-12" ng-repeat="result in results" ng-click="selectResult(result)">
+                        <div class="col-lg-3">
+                            <img src="{{result.imageUrl}}" alt="{{result.title + ' artwork'}}" />
+                        </div>
+                        
+                        <div class="col-lg-9">
+                            <h5>{{result.title}}</h5>
+                            <p style="font-size:10px">{{result.artist}}</p>
+                        </div>
                     </div>
                 </div>
             </div>

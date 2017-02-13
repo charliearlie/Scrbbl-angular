@@ -12,6 +12,7 @@ var config = require('./config');
 var LastfmApi = require('lastfmapi');
 var moment = require('moment');
 var http = require('http');
+var https = require('https');
 var compress = require('compression');
 var mb = require('musicbrainz');
 
@@ -123,31 +124,50 @@ app.post('/api/searchalbum', function (req, res, next) {
 
 });
 
+app.post('/api/searchalbumtwo', function (req, res, next) {
+	var albumDetails = req.body;
+	var str = '';
+	var ret;
+	var uri = encodeURI(config.itunes.hostname + 'search?term=' + albumDetails.title +
+		'&media=music&entity=album');
+	https.get(uri, function (response) {
+
+			response.on('data', function (chunk) {
+				str += chunk;
+			});
+			response.on('end', function () {
+				console.log(str);
+				ret = JSON.parse(str);
+				console.log(ret);
+				res.json(ret);
+			});
+		});
+
+});
+
 //Need to return a success message somehow!
 app.post('/api/scrobblealbum', function (req, res, next) {
 	var status = { "success": false };
 	var albumToScrobble = req.body;
 	var str = '';
 	var ret;
-	var time = Math.floor((new Date()).getTime() / 1000) - 300;
-	var uri = 'http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key='
-		+ config.lastfm.key + '&artist=' + albumToScrobble.artist
-		+ '&album=' + albumToScrobble.title + '&format=json';
-	var encodedUri = encodeURI(uri);
+	var uri = encodeURI(config.itunes.hostname + 'lookup?id=' + albumToScrobble.collectionId + '&entity=song');
 
-	http.get(encodedUri, function (response) {
+	https.get(uri, function (response) {
 		response.on('data', function (chunk) {
 			str += chunk;
 		});
 		response.on('end', function () {
 			ret = JSON.parse(str);
-			var tracks = ret.album.tracks.track;
+			ret.results.shift();
+			var tracks = ret.results;
 			scrobbleAlbum(albumToScrobble, tracks);
 			res.json(true);
 			
 		});
 	});
 });
+
 
 
 app.get('*', function (req, res) {
@@ -177,12 +197,12 @@ function scrobbleAlbum(albumToScrobble, tracks) {
 	var time = Math.floor((new Date()).getTime() / 1000) - 300;
 	_.forEachRight(tracks, function (track) {
 		console.log(track);
-		time -= Number(track.duration);
+		time -= Number(track.trackTimeMillis / 1000);
 		lastfm.track.scrobble({
-			'artist': track.artist.name,
-			'track': track.name,
+			'artist': track.artistName,
+			'track': track.trackCensoredName,
 			'timestamp': time,
-			'album': albumToScrobble.title
+			'album': track.collectionName
 
 		}, function (err, scrobbles) {
 			if (err) {

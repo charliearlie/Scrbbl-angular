@@ -5,7 +5,7 @@ angular.module('Scrbbl')
         return $http.post('/api/scrobble', track);
       },
       searchAlbum: function (album) {
-        return $http.post('/api/searchalbum', album);
+        return $http.post('/api/searchalbumtwo', album);
       },
       scrobbleAlbum: function (album) {
         return $http.post('/api/scrobblealbum', album);

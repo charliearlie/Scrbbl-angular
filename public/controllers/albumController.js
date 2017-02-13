@@ -4,11 +4,12 @@ angular.module('Scrbbl')
         $scope.album = {};
         $scope.scrobble = function() {
             Scrobble.searchAlbum($scope.album).then(function(result) {
-                $scope.results = _.map(result.data, function(result) {
+                $scope.results = _.map(result.data.results, function(result) {
                     return {
-                        title: result.name,
-                        artist: result.artist,
-                        mbid: result.mbid
+                        title: result.collectionName,
+                        artist: result.artistName,
+                        collectionId: result.collectionId,
+                        imageUrl: result.artworkUrl60
                     };
                 });
             });
@@ -20,9 +21,8 @@ angular.module('Scrbbl')
 
         };
 
-        $scope.selectResult = function(title, artist) {
-            $scope.album.title = title;
-            $scope.album.artist = artist;
+        $scope.selectResult = function(album) {
+            $scope.album = album;
 
             Scrobble.scrobbleAlbum($scope.album).then(function(result) {
                 $scope.success = result;
