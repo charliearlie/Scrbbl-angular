@@ -13,6 +13,7 @@ var LastfmApi = require('lastfmapi');
 var moment = require('moment');
 var http = require('http');
 var compress = require('compression');
+var mb = require('musicbrainz');
 
 var lastfm = new LastfmApi({
 	api_key: config.lastfm.key,
@@ -107,7 +108,7 @@ app.post('/api/searchalbum', function (req, res, next) {
 	var str = '';
 	var ret;
 	var uri = encodeURI('http://ws.audioscrobbler.com/2.0/?method=album.search&album=' + albumDetails.title +
-		'&api_key=' + config.lastfm.key + '&format=json&limit=6');
+		'&api_key=' + config.lastfm.key + '&format=json&limit=99');
 	http.get(uri, function (response) {
 
 			response.on('data', function (chunk) {
@@ -116,7 +117,7 @@ app.post('/api/searchalbum', function (req, res, next) {
 			response.on('end', function () {
 				console.log(str);
 				ret = JSON.parse(str);
-				res.json(ret);
+				res.json(ret.results.albummatches.album);
 			});
 		});
 
@@ -172,7 +173,7 @@ app.listen(app.get('port'), function () {
 });
 
 function scrobbleAlbum(albumToScrobble, tracks) {
-	let success = false;
+	var success = false;
 	var time = Math.floor((new Date()).getTime() / 1000) - 300;
 	_.forEachRight(tracks, function (track) {
 		console.log(track);

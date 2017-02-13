@@ -4,10 +4,11 @@ angular.module('Scrbbl')
         $scope.album = {};
         $scope.scrobble = function() {
             Scrobble.searchAlbum($scope.album).then(function(result) {
-                $scope.results = _.map(result.data.results.albummatches.album, function(result) {
+                $scope.results = _.map(result.data, function(result) {
                     return {
                         title: result.name,
-                        artist: result.artist
+                        artist: result.artist,
+                        mbid: result.mbid
                     };
                 });
             });
