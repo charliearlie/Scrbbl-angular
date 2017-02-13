@@ -2,7 +2,8 @@ angular.module('Scrbbl')
     .controller('ScrobbleAlbumCtrl', ['$scope', '$alert', 'Authenticate', '$location', 'Scrobble',
     function($scope, $alert, Authenticate, $location, Scrobble) {
         $scope.album = {};
-        $scope.scrobble = function() {
+        $scope.selectedAlbum = null;
+        $scope.search = function() {
             Scrobble.searchAlbum($scope.album).then(function(result) {
                 $scope.results = _.map(result.data.results, function(result) {
                     return {
@@ -22,8 +23,11 @@ angular.module('Scrbbl')
         };
 
         $scope.selectResult = function(album) {
-            $scope.album = album;
+            $scope.selectedAlbum = album;
 
+        }
+
+        $scope.scrobbleAlbum = function() {
             Scrobble.scrobbleAlbum($scope.album).then(function(result) {
                 $scope.success = result;
                 $scope.loading = false;

@@ -14,8 +14,6 @@ var moment = require('moment');
 var http = require('http');
 var https = require('https');
 var compress = require('compression');
-var mb = require('musicbrainz');
-
 var lastfm = new LastfmApi({
 	api_key: config.lastfm.key,
 	secret: config.lastfm.secret

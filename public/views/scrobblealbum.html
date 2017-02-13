@@ -19,8 +19,8 @@
                             <!-- Button (Double) -->
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="scrobblebutton"></label>
-                                <div class="col-md-8 buttonsubmit">
-                                    <button id="scrobblebutton" name="scrobblebutton" class="btn btn-primary" ng-click="scrobble()">Search</button>
+                                <div class="col-md-8 buttonsubmit" ng-if="user">
+                                    <button id="searchbutton" name="searchbutton" class="btn btn-primary" ng-click="search()">Search</button>
                                 </div>
                                 <div class="col-md-8 buttonsubmit" ng-if="!user">
                                     <button id="loginbutton" name="loginbutton" class="btn btn-danger" ng-click="authenticate()">Login with Last.FM</button>
@@ -29,6 +29,10 @@
 
                         </fieldset>
                     </form>
+                    <div ng-if="selectedAlbum">
+                        <p>Scrobble {{selectedAlbum.artist}} - {{selectedAlbum.title}}?</p>
+                        <button id="scrobblebutton" name="scrobblebutton" class="btn btn-success" ng-click="scrobbleAlbum()">Scrobble album</button>
+                    </div>
                     <div ng-if="success">
                         <h4 ng-if="success">Album scrobbled successfully</h4>
                         <button id="scrobbleagainbutton" name="srobbleagainbutton" class="btn btn-success" ng-click="refreshForm()">Scrobble another</button>
