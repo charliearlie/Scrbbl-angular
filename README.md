@@ -1,8 +1,9 @@
 # Scrbbl
 
+Scrbbl is a small web application for users of the online web service Last.FM. The site allows users to scrobble tracks/albums manually. Scrobble from radio as well as many other features that are coming up. This is a personal project which I develop in my spare time.
+
 ![Heroku](https://heroku-badge.herokuapp.com/?app=heroku-badge)
 
-Scrbbl is a small web application for users of the online web service Last.FM. The site allows users to scrobble tracks/albums manually. Scrobble from radio as well as many other features that are coming up. This is a personal project which I develop in my spare time.
 ### Technologies used
 
 * AngularJS
