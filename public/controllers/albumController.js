@@ -28,11 +28,11 @@ angular.module('Scrbbl')
         }
 
         $scope.scrobbleAlbum = function() {
-            Scrobble.scrobbleAlbum($scope.album).then(function(result) {
+            Scrobble.scrobbleAlbum($scope.selectedAlbum).then(function(result) {
                 $scope.success = result;
                 $scope.loading = false;
                 $scope.results = {};
-                $scope.album = {};
+                $scope.selectedAlbum = {};
             });
         }
     }]);
