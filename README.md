@@ -23,6 +23,7 @@ Install the dependencies and devDependencies and start the server.
 ```sh
 $ cd scrbbl
 $ npm install 
+$ bower install
 $ node server.js
 ```
 
