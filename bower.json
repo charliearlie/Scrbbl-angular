@@ -1,0 +1,30 @@
+{
+  "name": "scrbbl",
+  "description": "Manual Last.FM scrobbler",
+  "main": "index.html",
+  "authors": [
+    "Charliearlie <cw5790@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/charliearlie/scrbbl",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.2",
+    "angular-cookies": "^1.6.2",
+    "angular-messages": "^1.6.2",
+    "angular-resource": "^1.6.2",
+    "angular-route": "^1.6.2",
+    "angular-strap": "^2.3.12",
+    "angular-jquery": "^0.2.1",
+    "jquery": "^3.1.1",
+    "lodash": "^4.17.4",
+    "moment": "^2.17.1"
+  }
+}
