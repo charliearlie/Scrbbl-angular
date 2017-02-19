@@ -109,7 +109,7 @@ app.post('/api/scrobble', function (req, res, next) {
 		'artist': track.songArtist,
 		'track': track.songTitle,
 		'timestamp': date,
-		'album': track.albumArtist 
+		'album': track.albumTitle
 
 	}, function (err, scrobbles) {
 		if (err) {
