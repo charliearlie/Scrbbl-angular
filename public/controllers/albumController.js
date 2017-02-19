@@ -1,6 +1,6 @@
 angular.module('Scrbbl')
-    .controller('ScrobbleAlbumCtrl', ['$scope', '$alert', 'Authenticate', '$location', 'Scrobble',
-    function($scope, $alert, Authenticate, $location, Scrobble) {
+    .controller('ScrobbleAlbumCtrl', ['$scope', '$alert', 'Authenticate', '$location', 'Scrobble', 'UserPersistence',
+    function($scope, $alert, Authenticate, $location, Scrobble, UserPersistence) {
         $scope.album = {};
         $scope.selectedAlbum = null;
         $scope.search = function() {
@@ -28,6 +28,7 @@ angular.module('Scrbbl')
         }
 
         $scope.scrobbleAlbum = function() {
+            $scope.selectedAlbum.user = UserPersistence.getCookieData();
             Scrobble.scrobbleAlbum($scope.selectedAlbum).then(function(result) {
                 $scope.success = result;
                 $scope.loading = false;

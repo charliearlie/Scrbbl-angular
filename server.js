@@ -187,7 +187,7 @@ app.post('/api/scrobblealbum', function (req, res, next) {
 	var str = '';
 	var ret;
 	var uri = encodeURI(config.itunes.hostname + 'lookup?id=' + albumToScrobble.collectionId + '&entity=song');
-
+	lastfm.setSessionCredentials(albumToScrobble.user.userName, albumToScrobble.user.key);
 	https.get(uri, function (response) {
 		response.on('data', function (chunk) {
 			str += chunk;
@@ -197,6 +197,7 @@ app.post('/api/scrobblealbum', function (req, res, next) {
 			ret.results.shift();
 			var tracks = ret.results;
 			scrobbleAlbum(albumToScrobble, tracks);
+			lastfm.setSessionCredentials(null, null);
 			res.json(true);
 			
 		});
