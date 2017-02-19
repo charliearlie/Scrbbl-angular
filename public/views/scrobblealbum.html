@@ -32,7 +32,28 @@
                     <div ng-if="selectedAlbum.artist">
                         <p>Scrobble {{selectedAlbum.artist}} - {{selectedAlbum.title}}?</p>
                         <button id="scrobblebutton" name="scrobblebutton" class="btn btn-success" ng-click="scrobbleAlbum()">Scrobble album</button>
+                        <h4 style="margin-top:20px">Edit track tags</h4>
                     </div>
+                        <div class="col-lg-12 track-edit" ng-if="album.tracks" ng-repeat="track in album.tracks">
+                            <fieldset>
+                            <div class="form-group">
+                                <label class="col-md-2 col-lg-4 control-label" for="artistinput">Artist</label>
+                                <div class="col-md-8">
+                                    <input ng-model="track.artistName" id="artistinput" name="artistinput" type="text" placeholder="" class="form-control input-md">
+
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 col-lg-4 control-label" for="songinput">Song Title</label>
+                                <div class="col-md-8">
+                                    <input ng-model="track.trackCensoredName" id="songinput" name="songinput" type="text" placeholder="" class="form-control input-md">
+
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        </div>
                     <div ng-if="success">
                         <h4 ng-if="success">Album scrobbled successfully</h4>
                         <button id="scrobbleagainbutton" name="srobbleagainbutton" class="btn btn-success" ng-click="refreshForm()">Scrobble another</button>
@@ -47,7 +68,7 @@
                         <div class="col-lg-3">
                             <img src="{{result.imageUrl}}" alt="{{result.title + ' artwork'}}" />
                         </div>
-                        
+
                         <div class="col-lg-9">
                             <h5>{{result.title}}</h5>
                             <p style="font-size:10px">{{result.artist}}</p>
@@ -57,7 +78,5 @@
             </div>
 
         </div>
-
-
     </div>
 </div>

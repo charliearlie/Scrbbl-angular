@@ -1,5 +1,6 @@
 angular.module('Scrbbl')
-    .controller('MainCtrl', ['$scope', '$alert', 'Authenticate', '$location', 'Scrobble', 'UserPersistence',
-    function($scope, $alert, Authenticate, $location, Scrobble, UserPersistence) {
-        $scope.track = {};
+    .controller('MainCtrl', ['$scope', '$alert', 'Authenticate', '$location', '$cookies' ,'UserPersistence',
+    function($scope, $alert, Authenticate, $location, $cookies, UserPersistence) {
+        $scope.showFirstVisitMessage = !$cookies.visited;
+        $cookies.visited = 'yes';
     }]);

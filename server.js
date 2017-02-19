@@ -76,6 +76,24 @@ app.get('/api/radio/getstationplays/:station', function(req, res, next) {
 	console.log(station);
 });
 
+app.get('/api/albums/getalbuminfo/:collectionId', function(req, res, next) {
+	var collectionId = req.params.collectionId;
+	var str = '';
+	var uri = encodeURI(config.itunes.hostname + 'lookup?id=' + collectionId + '&entity=song');
+	https.get(uri, function (response) {
+
+			response.on('data', function (chunk) {
+				str += chunk;
+			});
+			response.on('end', function () {
+				ret = JSON.parse(str);
+				ret.results.shift();
+				var tracks = ret.results;
+				res.json(tracks);
+			});
+		});
+});
+
 app.post('/api/scrobble', function (req, res, next) {
 	var track = req.body;
 	var status = { "success": false };
@@ -143,26 +161,6 @@ app.post('/api/searchalbum', function (req, res, next) {
 	var albumDetails = req.body;
 	var str = '';
 	var ret;
-	var uri = encodeURI('http://ws.audioscrobbler.com/2.0/?method=album.search&album=' + albumDetails.title +
-		'&api_key=' + config.lastfm.key + '&format=json&limit=99');
-	http.get(uri, function (response) {
-
-			response.on('data', function (chunk) {
-				str += chunk;
-			});
-			response.on('end', function () {
-				console.log(str);
-				ret = JSON.parse(str);
-				res.json(ret.results.albummatches.album);
-			});
-		});
-
-});
-
-app.post('/api/searchalbumtwo', function (req, res, next) {
-	var albumDetails = req.body;
-	var str = '';
-	var ret;
 	var uri = encodeURI(config.itunes.hostname + 'search?term=' + albumDetails.title +
 		'&media=music&entity=album');
 	https.get(uri, function (response) {
@@ -183,25 +181,11 @@ app.post('/api/searchalbumtwo', function (req, res, next) {
 //Need to return a success message somehow!
 app.post('/api/scrobblealbum', function (req, res, next) {
 	var status = { "success": false };
-	var albumToScrobble = req.body;
-	var str = '';
-	var ret;
-	var uri = encodeURI(config.itunes.hostname + 'lookup?id=' + albumToScrobble.collectionId + '&entity=song');
-	lastfm.setSessionCredentials(albumToScrobble.user.userName, albumToScrobble.user.key);
-	https.get(uri, function (response) {
-		response.on('data', function (chunk) {
-			str += chunk;
-		});
-		response.on('end', function () {
-			ret = JSON.parse(str);
-			ret.results.shift();
-			var tracks = ret.results;
-			scrobbleAlbum(albumToScrobble, tracks);
-			lastfm.setSessionCredentials(null, null);
-			res.json(true);
-			
-		});
-	});
+	var album = req.body;
+	lastfm.setSessionCredentials(album.user.userName, album.user.key);
+	scrobbleAlbum(album.tracks);
+	lastfm.setSessionCredentials(null, null);
+	res.json(true);
 });
 
 
@@ -228,7 +212,7 @@ app.listen(app.get('port'), function () {
 	console.log("Express server listening on port " + app.get('port'));
 });
 
-function scrobbleAlbum(albumToScrobble, tracks) {
+function scrobbleAlbum(tracks) {
 	var success = false;
 	var time = Math.floor((new Date()).getTime() / 1000) - 300;
 	_.forEachRight(tracks, function (track) {
