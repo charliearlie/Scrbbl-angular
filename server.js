@@ -14,6 +14,8 @@ var moment = require('moment');
 var http = require('http');
 var https = require('https');
 var compress = require('compression');
+var request = require('request');
+var crypto = require('crypto');
 var lastfm = new LastfmApi({
 	api_key: config.lastfm.key,
 	secret: config.lastfm.secret
@@ -84,6 +86,7 @@ app.post('/api/scrobble', function (req, res, next) {
 		date = Number(moment(douche).format('X'));
 	}
 	console.log(date);
+	lastfm.setSessionCredentials(track.user.userName, track.user.key);
 	lastfm.track.scrobble({
 		'artist': track.songArtist,
 		'track': track.songTitle,
@@ -93,13 +96,47 @@ app.post('/api/scrobble', function (req, res, next) {
 	}, function (err, scrobbles) {
 		if (err) {
 			return console.log('We\'re in trouble', err);
+			lastfm.setSessionCredentials(null, null);
 			return res.json(status.success);
 		}
 
 		console.log('We have just scrobbled:', scrobbles);
 		status.success = true;
+		lastfm.setSessionCredentials(null, null);
 		return res.json(status.success);
 	});
+	// var uri = encodeURI(config.lastfm.hostname + '?artist=' + track.artist + "&");
+	// var params = {
+	// 	artist: track.songArtist,
+	// 	album: track.albumTitle ? track.albumTitle : "",
+	// 	albumArtist: track.albumArtist ? track.albumArtist : "", 
+	// 	api_key: config.lastfm.key,
+	// 	format: 'json',
+	// 	method: 'track.scrobble',
+	// 	sk: track.sk,
+	// 	timestamp: date,
+	// 	track: track.songTitle
+	// };
+
+	// var sig = "";
+	// _.forEach(params, function(value, key) {
+	// 	sig += key + value;
+	// });
+	// sig += config.lastfm.secret;
+	// sig = encodeURI(sig);
+	// console.log(sig);
+
+	// params.api_sig = crypto.createHash('md5').update(sig).digest('hex');
+
+	// request({
+	// 	url: config.lastfm.hostname,
+	// 	method: "POST",
+	// 	json: true,
+	// 	body: params
+	// }, function(error, response, body) {
+	// 	if (error) throw  error;
+	// 	console.log(response.request);
+	// });
 });
 
 app.post('/api/searchalbum', function (req, res, next) {

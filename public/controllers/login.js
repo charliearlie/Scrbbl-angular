@@ -5,9 +5,11 @@ angular.module('Scrbbl')
             $scope.user = UserPersistence.getCookieData();
         }
         var param = $location.search().token;
-        if (param && param != 'undefined') {
+        if (param && param != 'undefined' && !UserPersistence.getCookieData()) {
             Authenticate.createSession(param).then(function(result) {
-                $scope.user = result.data.username;
+                $scope.user = {};
+                $scope.user.username = result.data.username;
+                $scope.user.key = result.data.key;
                 UserPersistence.setCookieData($scope.user);
             });;
         }

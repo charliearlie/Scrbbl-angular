@@ -1,10 +1,11 @@
 angular.module('Scrbbl')
-    .controller('ManualCtrl', ['$scope', '$alert', 'Authenticate', '$location', 'Scrobble',
-    function($scope, $alert, Authenticate, $location, Scrobble) {
+    .controller('ManualCtrl', ['$scope', '$alert', 'Authenticate', '$location', 'Scrobble', 'UserPersistence',
+    function($scope, $alert, Authenticate, $location, Scrobble, UserPersistence) {
         $scope.track = {};
         $scope.success = false;
         $scope.scrobble = function() {
             $scope.loading = true;
+            $scope.track.user = UserPersistence.getCookieData();
             Scrobble.scrobbleTrack($scope.track).then(function(data) {
                 $scope.success = data;
                 $scope.loading = false;
