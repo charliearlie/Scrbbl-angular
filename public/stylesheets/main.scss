@@ -7116,9 +7116,15 @@ ul.chats li.out .message {
 }
 
 .radio-track {
-  background-color: white;
-  border-bottom:2px solid #BDBDBD;
-  padding:5px;
+  background-color: #FAFAFA;
+  border-bottom:1.5px solid #BDBDBD;
+  border-left:0.5px solid #BDBDBD;
+  border-right:0.5px solid #BDBDBD;
+  border-top:0.5px solid #BDBDBD;
+  padding-top: 8px;
+  padding-left:4px;
+  margin:1px;
+
 }
 
 #radio-track-info {
