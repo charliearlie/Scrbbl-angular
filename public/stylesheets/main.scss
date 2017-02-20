@@ -7115,25 +7115,16 @@ ul.chats li.out .message {
   margin: 0;
 }
 
-.demo-card-wide.mdl-card {
-  width: 512px;
-  margin:0 auto;
-}
-.demo-card-wide > .mdl-card__title {
-  color: #fff;
-  height: 176px;
-  background: url('http://creatorclip.info/wp-content/uploads/2015/07/material.png') center / cover;
-}
-.demo-card-wide > .mdl-card__menu {
-  color: #fff;
+.radio-track {
+  background-color: white;
+  border-bottom:2px solid #BDBDBD;
+  padding:5px;
 }
 
-.demo-card-square.mdl-card {
-  width: 320px;
-  height: 320px;
-  margin:0 auto;
+#radio-track-info {
+  font-size:0.9em;
 }
-.demo-card-square > .mdl-card__title {
-  color: #fff;
-  background:url('http://creatorclip.info/wp-content/uploads/2015/07/material.png') no-repeat center / cover;
+
+#radio-track-date{
+  font-size:0.85em;
 }

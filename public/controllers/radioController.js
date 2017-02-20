@@ -24,7 +24,6 @@ angular.module('Scrbbl')
             console.log($scope.selectedStation);
             Radio.getStationPlays($scope.selectedStation).then(function(result) {
                 var tracks = result.data.recenttracks.track;
-                console.log(tracks);
                 $scope.results = _.map(tracks, function(track) {
                     return {
                         title: track.name,

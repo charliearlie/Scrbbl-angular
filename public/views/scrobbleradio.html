@@ -31,6 +31,17 @@
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col-lg-8 col-md-8 radio-track" ng-if="results" ng-repeat="result in results">
+                    <div class="col-lg-7 col-md-7" >
+                        <p id="radio-track-info">{{result.artist}} - {{result.title}}</p>
+                    </div>
+                    <div class="col-lg-3 col-md-3 pull-right">
+                        <p id="radio-track-date">{{result.date}}</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
 
