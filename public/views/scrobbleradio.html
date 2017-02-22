@@ -18,7 +18,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-md-8 buttonsubmit" ng-if="user">
-                                    <button id="radiobutton" name="radiobutton" class="btn btn-primary formbutton" ng-click="getStationPlays()">Display recent tracks</button>
+                                    <button id="radiobutton" name="radiobutton" class="btn btn-success formbutton" ng-click="scrobbleSelected()">Scrobble selected tracks</button>
                                 </div>
                                 <div class="col-md-8 buttonsubmit" ng-if="!user">
                                     <button id="loginbutton" name="loginbutton" class="btn btn-danger formbutton" ng-click="authenticate()">Login with Last.FM</button>
@@ -34,13 +34,13 @@
             <div class="row">
                 <div class="col-lg-8 col-md-8 radio-track" ng-if="results" ng-repeat="result in results">
                     <div class="col-lg-1 col-md-1">
-                        <input type="checkbox">
+                        <input type="checkbox" ng-model="result.toScrobble">
                     </div>
                     <div class="col-lg-7 col-md-7" >
-                        <p id="radio-track-info">{{result.artist}} - {{result.title}}</p>
+                        <p id="radio-track-info" style="margin-top:1px; font-weight:400;">{{result.artist}} - {{result.title}}</p>
                     </div>
                     <div class="col-lg-3 col-md-3 pull-right">
-                        <p id="radio-track-date">{{result.date}}</p>
+                        <p id="radio-track-date" style="margin-top:1px;">{{result.date}}</p>
                     </div>
                     
                 </div>

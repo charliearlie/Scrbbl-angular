@@ -21,19 +21,25 @@ angular.module('Scrbbl')
         ];
 
         $scope.getStationPlays = function() {
-            console.log($scope.selectedStation);
             Radio.getStationPlays($scope.selectedStation).then(function(result) {
                 var tracks = result.data.recenttracks.track;
-                $scope.results = _.map(tracks, function(track) {
+                $scope.results = _.map(tracks, (track) => {
                     return {
                         title: track.name,
                         artist: track.artist['#text'],
                         date: track.date ? track.date['#text'] : ' '
+
                     };
                 });
-
-                console.log($scope.results);
             });
+        }
+
+        $scope.scrobbleSelected = function() {
+            let selected = _.filter($scope.results, (track) => {
+                return track.toScrobble;
+            });
+
+            console.log(selected);
         }
         
     }]);
