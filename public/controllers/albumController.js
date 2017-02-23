@@ -5,16 +5,10 @@ angular.module('Scrbbl')
         $scope.album = {};
         $scope.selectedAlbum = null;
         $scope.search = function() {
-            Scrobble.searchAlbum($scope.album).then(function(result) {
-                $scope.results = _.map(result.data.results, function(result) {
-                    return {
-                        title: result.collectionName,
-                        artist: result.artistName,
-                        collectionId: result.collectionId,
-                        imageUrl: result.artworkUrl60
-                    };
+            Scrobble.searchAlbum($scope.album)
+                .then(function(results) {
+                    $scope.results = results;
                 });
-            });
         };
 
         $scope.refreshForm = function() {
@@ -25,9 +19,10 @@ angular.module('Scrbbl')
 
         $scope.selectResult = function(album) {
             $scope.selectedAlbum = album;
-            Track.getAlbumTracks(album.collectionId).then(function(result) {
-                $scope.album.tracks = result.data;
-            });
+            Track.getAlbumTracks(album.collectionId)
+                .then(function(tracks) {
+                    $scope.album.tracks = tracks;
+                });
 
         }
 
