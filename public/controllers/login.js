@@ -1,7 +1,6 @@
 angular.module('Scrbbl')
-    .controller('LoginCtrl', ['$scope', '$alert', 'Authenticate', '$location', 'UserPersistence', LoginController]);
-    
-    function LoginController($scope, $alert, Authenticate, $location, UserPersistence) {
+    .controller('LoginCtrl', ['$scope', '$alert', 'Authenticate', '$location', 'UserPersistence', 
+    function($scope, $alert, Authenticate, $location, UserPersistence) {
         if (UserPersistence.getCookieData()) {
             $scope.user = UserPersistence.getCookieData();
         }
@@ -24,4 +23,4 @@ angular.module('Scrbbl')
             UserPersistence.clearCookieData();
             location.reload();
         }
-    }
+    }]);

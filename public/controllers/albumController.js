@@ -1,8 +1,6 @@
 angular.module('Scrbbl')
     .controller('ScrobbleAlbumCtrl', ['$scope', '$alert', 'Authenticate', '$location', 'Scrobble', 'UserPersistence',
-    'Track', ScrobbleAlbumController]);
-
-    function ScrobbleAlbumController($scope, $alert, Authenticate, $location, Scrobble, UserPersistence, Track) {
+    'Track', function($scope, $alert, Authenticate, $location, Scrobble, UserPersistence, Track) {
         $scope.album = {};
         $scope.selectedAlbum = null;
         $scope.search = function() {
@@ -41,4 +39,4 @@ angular.module('Scrbbl')
                 $scope.album = {};
             });
         }
-    }
+    }]);

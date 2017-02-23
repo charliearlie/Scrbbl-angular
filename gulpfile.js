@@ -17,14 +17,6 @@ gulp.task('sass', function() {
 
 gulp.task('compress', function() {
 	gulp.src([
-		'bower_components/angular-cookies/angular-cookies.js',
-		'bower_components/angular-messages/angular-messages.js',
-		'bower_components/angular-resource/angular-resource.js',
-		'bower_components/angular-route/angular-route.js',
-		'bower_components/angular-strap/dist/angular-strap.js',
-		'bower_components/jquery/jquery.js',
-		'bower_components/lodash/dist/lodash.js',
-		'bower_components/moment/moment.js',
 		'app.js',
 		'public/services/*.js',
 		'public/controllers/*.js',

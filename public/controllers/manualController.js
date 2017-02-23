@@ -1,7 +1,6 @@
 angular.module('Scrbbl')
-    .controller('ManualCtrl', ['$scope', '$alert', 'Authenticate', '$location', 'Scrobble', 'UserPersistence', ManualController]);
-    
-    function MainController($scope, $alert, Authenticate, $location, Scrobble, UserPersistence) {
+    .controller('ManualCtrl', ['$scope', '$alert', 'Authenticate', '$location', 'Scrobble', 'UserPersistence', 
+    function($scope, $alert, Authenticate, $location, Scrobble, UserPersistence) {
         $scope.track = {};
         $scope.success = false;
         $scope.scrobble = function() {
@@ -22,4 +21,4 @@ angular.module('Scrbbl')
         $scope.$watch('track.artist', function() {
             console.log($scope.track);
         });
-    }
+    }]);
