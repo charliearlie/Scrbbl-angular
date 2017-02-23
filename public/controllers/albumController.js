@@ -1,7 +1,7 @@
 angular.module('Scrbbl')
     .controller('ScrobbleAlbumCtrl', ['$scope', '$alert', 'Authenticate', '$location', 'Scrobble', 'UserPersistence',
-    'Track',
-    function($scope, $alert, Authenticate, $location, Scrobble, UserPersistence, Track) {
+    'Track', ScrobbleAlbumController]);
+    function ScrobbleAlbumController($scope, $alert, Authenticate, $location, Scrobble, UserPersistence, Track) {
         $scope.album = {};
         $scope.selectedAlbum = null;
         $scope.search = function() {
@@ -14,6 +14,10 @@ angular.module('Scrbbl')
                         imageUrl: result.artworkUrl60
                     };
                 });
+            }).catch(function(error) {
+                console.log(error);
+            }).finally(function() {
+                console.log("Complete"); //This will be useful eventually
             });
         };
 
@@ -41,4 +45,4 @@ angular.module('Scrbbl')
                 $scope.album = {};
             });
         }
-    }]);
+    }
