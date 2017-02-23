@@ -1,4 +1,5 @@
 angular.module('Scrbbl')
+<<<<<<< HEAD
     .controller('RadioCtrl', ['$scope', '$alert', 'Authenticate', '$location', 'Scrobble', 'Radio',
         function ($scope, $alert, Authenticate, $location, Scrobble, Radio) {
             $scope.stations = [
@@ -28,13 +29,7 @@ angular.module('Scrbbl')
                                 title: track.name,
                                 artist: track.artist['#text'],
                                 date: track.date ? track.date['#text'] : ' '
-
-                            };
-                        });
-                    })
-                    .catch(function(error) {
-                        console.log('Error message: ' + error);
-                    })
+=======
 .controller('RadioCtrl', ['$scope', '$alert', 'Authenticate', '$location', 'Scrobble', 'Radio', RadioController]);
 
     function RadioController($scope, $alert, Authenticate, $location, Scrobble, Radio) {
@@ -55,6 +50,16 @@ angular.module('Scrbbl')
                 "station": "Radio 1xtra",
                 "lastfmName": "bbc1xtra"
             }
+        ];
+>>>>>>> 6cc38ddeefaa484fd3884cdff7d5445480e108b1
+
+                            };
+                        });
+                    })
+                    .catch(function(error) {
+                        console.log('Error message: ' + error);
+                    })
+            }
 
             $scope.scrobbleSelected = function () {
                 let selected = _.filter($scope.results, function(track){
@@ -64,7 +69,11 @@ angular.module('Scrbbl')
                 console.log(selected);
             }
 
+<<<<<<< HEAD
+        }]);
+=======
             console.log(selected);
         }
         
     }
+>>>>>>> 6cc38ddeefaa484fd3884cdff7d5445480e108b1

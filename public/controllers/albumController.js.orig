@@ -1,7 +1,5 @@
 angular.module('Scrbbl')
     .controller('ScrobbleAlbumCtrl', ['$scope', '$alert', 'Authenticate', '$location', 'Scrobble', 'UserPersistence',
-    'Track',
-    function($scope, $alert, Authenticate, $location, Scrobble, UserPersistence, Track) {
     'Track', ScrobbleAlbumController]);
     function ScrobbleAlbumController($scope, $alert, Authenticate, $location, Scrobble, UserPersistence, Track) {
         $scope.album = {};
@@ -11,11 +9,14 @@ angular.module('Scrbbl')
                 .then(function(results) {
                     $scope.results = results;
                 });
+<<<<<<< HEAD
+=======
             }).catch(function(error) {
                 console.log(error);
             }).finally(function() {
                 console.log("Complete"); //This will be useful eventually
             });
+>>>>>>> 6cc38ddeefaa484fd3884cdff7d5445480e108b1
         };
 
         $scope.refreshForm = function() {
