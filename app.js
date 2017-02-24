@@ -20,6 +20,10 @@ app.config(['$locationProvider', '$routeProvider', function ($locationProvider, 
                 templateUrl: 'public/views/scrobbleradio.html',
                 controller: 'RadioCtrl'
             })
+            .when('/scrobbleuser', {
+                templaterUrl: 'public/views/scrobbleuser.html',
+                controller: 'UserCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });
