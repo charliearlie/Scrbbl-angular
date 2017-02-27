@@ -1,12 +1,19 @@
 (function () {
 	angular.module('Scrbbl')
-		.factory('Scrobble', ['$http', '$window', '$q', function ($http, $window, $q) {
+		.factory('Scrobble', ['$http', '$window', '$q', 'UserPersistence', function ($http, $window, $q, UserPersistence) {
+			
+			var user = UserPersistence.getCookieData();
+
+			var topArtists = {};
 			return {
 				scrobbleTrack: scrobbleTrack,
 				searchAlbum: searchAlbum,
-				scrobbleAlbum: scrobbleAlbum
+				scrobbleAlbum: scrobbleAlbum,
+				getArtistScrobbles: getArtistScrobbles,
+				getUserTopArtists: getUserTopArtists,
+				topArtists: topArtists
 			};
-			
+
 			function scrobbleTrack(track) {
 				return $http.post('/api/scrobble', track);
 			}
@@ -30,6 +37,25 @@
 			}
 			function scrobbleAlbum(album) {
 				return $http.post('/api/scrobblealbum', album);
+			}
+
+			function getArtistScrobbles(artist) {
+				
+			}
+
+			function getUserTopArtists() {
+				//This will have to change. Key should not be in the request
+				return $http({
+					method: 'GET',
+					url: encodeURI('api/getartistscrobbles'),
+					headers: {
+						'username': user.userName,
+						'key': user.key
+					}
+				})
+				.then(function(response) {
+					return response.data;
+				});
 			}
 		}]);
 } ());

@@ -25,7 +25,9 @@ gulp.task('compress', function() {
 		
   	])
     .pipe(concat('app.min.js'))
-    .pipe(uglify())
+    .pipe(uglify().on('error', function(e) {
+		console.log(e);
+	}))
     .pipe(gulp.dest('public'));
 });
 

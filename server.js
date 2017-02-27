@@ -94,6 +94,24 @@ app.get('/api/albums/getalbuminfo/:collectionId', function(req, res, next) {
 		});
 });
 
+app.get('/api/getartistscrobbles', function(req, res, next) {
+	var artist = req.params.artist;
+	console.log(req);
+	var user = {
+		username: req.headers.username,
+		key: req.headers.key
+	}
+	var str = '';
+	lastfm.setSessionCredentials(user.username, user.key);
+	lastfm.library.getArtists({
+		'user': user.username,
+		'limit': 99
+	}, function(err, artists) {
+		lastfm.setSessionCredentials(null, null);
+		res.json(artists.artist);
+	});
+});
+
 app.post('/api/scrobble', function (req, res, next) {
 	var track = req.body;
 	var status = { "success": false };
@@ -104,7 +122,7 @@ app.post('/api/scrobble', function (req, res, next) {
 		date = Number(moment(douche).format('X'));
 	}
 	console.log(date);
-	lastfm.setSessionCredentials(track.user.userName, track.user.key);
+	lastfm.setSessionCredentials(track.user.userName, track.user.key); //Horrible hack until I sort sessions with this api
 	lastfm.track.scrobble({
 		'artist': track.songArtist,
 		'track': track.songTitle,
@@ -114,13 +132,13 @@ app.post('/api/scrobble', function (req, res, next) {
 	}, function (err, scrobbles) {
 		if (err) {
 			return console.log('We\'re in trouble', err);
-			lastfm.setSessionCredentials(null, null);
+			lastfm.setSessionCredentials(null, null); //Horrible hack again
 			return res.json(status.success);
 		}
 
 		console.log('We have just scrobbled:', scrobbles);
 		status.success = true;
-		lastfm.setSessionCredentials(null, null);
+		lastfm.setSessionCredentials(null, null); //Horrible hack again
 		return res.json(status.success);
 	});
 	// var uri = encodeURI(config.lastfm.hostname + '?artist=' + track.artist + "&");
@@ -182,9 +200,9 @@ app.post('/api/searchalbum', function (req, res, next) {
 app.post('/api/scrobblealbum', function (req, res, next) {
 	var status = { "success": false };
 	var album = req.body;
-	lastfm.setSessionCredentials(album.user.userName, album.user.key);
+	lastfm.setSessionCredentials(album.user.userName, album.user.key); //Horrible hack again
 	scrobbleAlbum(album.tracks);
-	lastfm.setSessionCredentials(null, null);
+	lastfm.setSessionCredentials(null, null); //Horrible hack again
 	res.json(true);
 });
 

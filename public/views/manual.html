@@ -73,6 +73,11 @@
 
                         </fieldset>
                     </form>
+
+                    <div ng-if="artistScrobbles">
+                        <p>You have scrobbled {{track.songArtist}} {{artistScrobbles}} times</p>
+                    </div>
+
                     <div ng-if="success">
                         <h4 ng-if="success">Track scrobbled successfully</h4>
                         <button id="scrobbleagainbutton" name="srobbleagainbutton" class="btn btn-success" ng-click="refreshForm()">Scrobble another</button>
