@@ -6,6 +6,7 @@ var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
 var plumber = require('gulp-plumber');
 var templateCache = require('gulp-angular-templatecache');
+var babel  = require('gulp-babel');
 
 gulp.task('sass', function() {
 	gulp.src('public/stylesheets/main.scss')
@@ -24,6 +25,7 @@ gulp.task('compress', function() {
 		'public/directives/*.js'
 		
   	])
+	.pipe(babel({presets: ['es2015']}))
     .pipe(concat('app.min.js'))
     .pipe(uglify().on('error', function(e) {
 		console.log(e);

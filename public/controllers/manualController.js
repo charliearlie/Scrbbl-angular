@@ -1,10 +1,13 @@
 angular.module('Scrbbl')
     .controller('ManualCtrl', ['$scope', '$alert', 'Authenticate', '$location', 'Scrobble', 'UserPersistence',
         function ($scope, $alert, Authenticate, $location, Scrobble, UserPersistence) {
-            Scrobble.getUserTopArtists()
-                .then(function (topArtists) {
-                    Scrobble.topArtists = topArtists;
-                });
+            if (UserPersistence.getCookieData()) {
+                Scrobble.getUserTopArtists()
+                    .then(function (topArtists) {
+                        Scrobble.topArtists = topArtists;
+                     });
+            }
+            
 
             $scope.track = {};
             $scope.success = false;
