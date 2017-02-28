@@ -36,7 +36,15 @@
 					});
 			}
 			function scrobbleAlbum(album) {
-				return $http.post('/api/scrobblealbum', album);
+				return $http({
+					method: 'POST',
+					url: encodeURI('/api/scrobblealbum'),
+					headers: {
+						'username': user.userName,
+						'key': user.key
+					},
+					data: album
+				});
 			}
 
 			function getArtistScrobbles(artist) {

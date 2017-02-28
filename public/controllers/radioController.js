@@ -38,11 +38,28 @@ angular.module('Scrbbl')
     }
 
     $scope.scrobbleSelected = function () {
-        let selected = _.filter($scope.results, function (track) {
-            return track.toScrobble;
-        });
+        var selected = {};
+        selected.tracks = _.chain($scope.results)
+            .filter(function (track) {
+                return track.toScrobble;
+            })
+            .map(function(track) {
+                return {
+                    artistName: track.artist,
+                    trackCensoredName: track.title,
+                    date: track.date
+                }
+            })
+            .value();
 
-        console.log(selected);
-    }
+        Scrobble.scrobbleAlbum(selected)
+            .then(function(result) {
+                $scope.success = result;
+                $scope.loading = false;
+                $scope.results = {};
+                $scope.selectedAlbum = {};
+                $scope.album = {}; //Sort all this
+            });
+        }
 
     }]);

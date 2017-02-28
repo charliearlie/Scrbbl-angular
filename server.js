@@ -141,38 +141,6 @@ app.post('/api/scrobble', function (req, res, next) {
 		lastfm.setSessionCredentials(null, null); //Horrible hack again
 		return res.json(status.success);
 	});
-	// var uri = encodeURI(config.lastfm.hostname + '?artist=' + track.artist + "&");
-	// var params = {
-	// 	artist: track.songArtist,
-	// 	album: track.albumTitle ? track.albumTitle : "",
-	// 	albumArtist: track.albumArtist ? track.albumArtist : "", 
-	// 	api_key: config.lastfm.key,
-	// 	format: 'json',
-	// 	method: 'track.scrobble',
-	// 	sk: track.sk,
-	// 	timestamp: date,
-	// 	track: track.songTitle
-	// };
-
-	// var sig = "";
-	// _.forEach(params, function(value, key) {
-	// 	sig += key + value;
-	// });
-	// sig += config.lastfm.secret;
-	// sig = encodeURI(sig);
-	// console.log(sig);
-
-	// params.api_sig = crypto.createHash('md5').update(sig).digest('hex');
-
-	// request({
-	// 	url: config.lastfm.hostname,
-	// 	method: "POST",
-	// 	json: true,
-	// 	body: params
-	// }, function(error, response, body) {
-	// 	if (error) throw  error;
-	// 	console.log(response.request);
-	// });
 });
 
 app.post('/api/searchalbum', function (req, res, next) {
@@ -198,9 +166,13 @@ app.post('/api/searchalbum', function (req, res, next) {
 
 //Need to return a success message somehow!
 app.post('/api/scrobblealbum', function (req, res, next) {
+	var user = {
+		username: req.headers.username,
+		key: req.headers.key
+	}
 	var status = { "success": false };
 	var album = req.body;
-	lastfm.setSessionCredentials(album.user.userName, album.user.key); //Horrible hack again
+	lastfm.setSessionCredentials(user.username, user.key); //Horrible hack again
 	scrobbleAlbum(album.tracks);
 	lastfm.setSessionCredentials(null, null); //Horrible hack again
 	res.json(true);
@@ -235,7 +207,8 @@ function scrobbleAlbum(tracks) {
 	var time = Math.floor((new Date()).getTime() / 1000) - 300;
 	_.forEachRight(tracks, function (track) {
 		console.log(track);
-		time -= Number(track.trackTimeMillis / 1000);
+		time = track.date ? moment(track.date).format('X') : time -= Number(track.trackTimeMillis / 1000);
+		console.log(time);
 		lastfm.track.scrobble({
 			'artist': track.artistName,
 			'track': track.trackCensoredName,
