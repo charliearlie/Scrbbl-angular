@@ -8,14 +8,18 @@
         <div class="page-header" id="banner">
             <div class="row">
                 <div class="col-lg-8 col-md-7 col-sm-6">
-                    <form class="form-horizontal" ng-if="!success && !loading">
+                    <form class="form-horizontal" name="manualform" ng-if="!success && !loading">
                         <fieldset>
 
                             <!-- Text input-->
                             <div class="form-group">
                                 <label class="col-md-2 control-label" for="artistinput">Artist</label>
                                 <div class="col-md-8">
-                                    <input ng-model="track.songArtist" id="artistinput" name="artistinput" type="text" placeholder="" class="form-control input-md">
+                                    <input ng-model="track.songArtist" id="artistinput" name="artistinput" type="text" placeholder="" class="form-control input-md" ng-required="true">
+
+                                </div>
+                                <div class="col-md-2" > <!--put this styling in css file-->
+                                    <span ng-show="manualform.$error.required" style="color:#D32F2F">required</span> 
 
                                 </div>
                             </div>
@@ -25,6 +29,10 @@
                                 <label class="col-md-2 control-label" for="songinput">Song Title</label>
                                 <div class="col-md-8">
                                     <input ng-model="track.songTitle" id="songinput" name="songinput" type="text" placeholder="" class="form-control input-md">
+
+                                </div>
+                                <div class="col-md-2" > <!--put this styling in css file-->
+                                    <span ng-show="manualform.$error.required" style="color:#D32F2F">required</span> 
 
                                 </div>
                             </div>
@@ -63,7 +71,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="scrobblebutton"></label>
                                 <div class="col-md-8" ng-if="user">
-                                    <button id="scrobblebutton" name="scrobblebutton" class="btn btn-success" ng-click="scrobble()">Scrobble</button>
+                                    <button id="scrobblebutton" name="scrobblebutton" class="btn btn-success" ng-click="scrobble()" ng-disabled="manualform.$invalid">Scrobble</button>
                                     <button id="clearbutton" ng-click="authenticate()" name="clearbutton" class="btn btn-danger">Clear</button>
                                 </div>
                                 <div class="col-md-8" ng-if="!user">

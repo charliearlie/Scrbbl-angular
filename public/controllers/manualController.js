@@ -31,9 +31,6 @@ app.controller('ManualCtrl', ['$scope', '$alert', 'Authenticate', '$location', '
             $scope.$watch('track.songArtist', _.debounce(function (artist, newVal) {
                 $scope.$apply(function () {
                     if (artist !== undefined) {
-                        // $scope.artistScrobbles = _.find($scope.topArtists, function(a) {
-                        //     return a.name.toLowerCase() === artist.toLowerCase();
-                        // });
                         
                         $scope.artistScrobbles = _.result(_.find(Scrobble.topArtists, function(a) {
                             return a.name.toLowerCase() === artist.toLowerCase();
