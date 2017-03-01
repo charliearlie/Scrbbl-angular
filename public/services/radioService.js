@@ -1,3 +1,5 @@
+'use strict';
+
 (function () {
 	app.factory('Radio', ['$http', '$window', '$q', function ($http, $window, $q) {
 			return {

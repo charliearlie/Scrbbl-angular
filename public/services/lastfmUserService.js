@@ -1,11 +1,15 @@
-app.factory('lastfmUser', ['$http', '$q', lastfmUserService]);
+'use strict';
 
-function lastfmUserService($http, $q) {
+(function () {
+    app.factory('lastfmUser', ['$http', '$q', lastfmUserService]);
 
-    function getUserData() {
-        return $http.get('/api/user/getstuff')
-            .then(sendResponseData)
-            .catch(sendResponseDataError);
+    function lastfmUserService($http, $q) {
+
+        function getUserData() {
+            return $http.get('/api/user/getstuff')
+                .then(sendResponseData)
+                .catch(sendResponseDataError);
+        }
+
     }
-
-}
+} ());

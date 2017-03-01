@@ -1,3 +1,5 @@
+'use strict';
+
 (function () {
 	app.factory('Track', ['$http', '$window', '$q', function ($http, $window, $q) {
 			return {

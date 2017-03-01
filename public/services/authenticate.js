@@ -1,3 +1,5 @@
+'use strict';
+
 (function () {
     app.factory('Authenticate', ['$http', '$window', '$location', function ($http, $window, $location) {
             return {

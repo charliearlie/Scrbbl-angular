@@ -1,3 +1,5 @@
+'use strict';
+
 var app = angular.module('Scrbbl', ['ngCookies', 'ngResource', 'ngMessages', 'ngRoute', 'mgcrea.ngStrap']);
 
 app.config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {

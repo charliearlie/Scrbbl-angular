@@ -1,3 +1,5 @@
+'use strict';
+
 (function () {
 	app.factory('Scrobble', ['$http', '$window', '$q', 'UserPersistence', function ($http, $window, $q, UserPersistence) {
 			

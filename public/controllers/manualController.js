@@ -1,3 +1,6 @@
+'use strict';
+
+(function () {
 app.controller('ManualCtrl', ['$scope', '$alert', 'Authenticate', '$location', 'Scrobble', 'UserPersistence',
         function ($scope, $alert, Authenticate, $location, Scrobble, UserPersistence) {
             if (UserPersistence.getCookieData()) {
@@ -42,3 +45,4 @@ app.controller('ManualCtrl', ['$scope', '$alert', 'Authenticate', '$location', '
                 });
             }, 1000), true);
         }]);
+}());
