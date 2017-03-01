@@ -1,6 +1,5 @@
 (function () {
-    angular.module('Scrbbl')
-        .factory('Authenticate', ['$http', '$window', '$location', function ($http, $window, $location) {
+    app.factory('Authenticate', ['$http', '$window', '$location', function ($http, $window, $location) {
             return {
                 login: login,
                 createSession: createSession

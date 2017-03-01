@@ -1,5 +1,4 @@
-angular.module('Scrbbl')
-    .controller('ScrobbleAlbumCtrl', ['$scope', '$alert', 'Authenticate', '$location', 'Scrobble', 'UserPersistence',
+app.controller('ScrobbleAlbumCtrl', ['$scope', '$alert', 'Authenticate', '$location', 'Scrobble', 'UserPersistence',
     'Track', function($scope, $alert, Authenticate, $location, Scrobble, UserPersistence, Track) {
         $scope.album = {};
         $scope.selectedAlbum = null;

@@ -1,5 +1,4 @@
-angular.module('Scrbbl')
-    .controller('RadioCtrl', ['$scope', '$alert', 'Authenticate', '$location', 'Scrobble', 'Radio', 
+app.controller('RadioCtrl', ['$scope', '$alert', 'Authenticate', '$location', 'Scrobble', 'Radio', 
     function($scope, $alert, Authenticate, $location, Scrobble, Radio) {
     $scope.stations = [
         {

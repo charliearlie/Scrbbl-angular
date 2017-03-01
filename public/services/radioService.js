@@ -1,6 +1,5 @@
 (function () {
-	angular.module('Scrbbl')
-		.factory('Radio', ['$http', '$window', '$q', function ($http, $window, $q) {
+	app.factory('Radio', ['$http', '$window', '$q', function ($http, $window, $q) {
 			return {
 				getStationPlays: getStationPlays
 			};

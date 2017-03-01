@@ -1,5 +1,4 @@
-angular.module('Scrbbl')
-    .controller('LoginCtrl', ['$scope', '$alert', 'Authenticate', '$location', 'UserPersistence', 
+app.controller('LoginCtrl', ['$scope', '$alert', 'Authenticate', '$location', 'UserPersistence', 
     function($scope, $alert, Authenticate, $location, UserPersistence) {
         if (UserPersistence.getCookieData()) {
             $scope.user = UserPersistence.getCookieData();

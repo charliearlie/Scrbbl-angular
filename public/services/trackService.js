@@ -1,6 +1,5 @@
 (function () {
-	angular.module('Scrbbl')
-		.factory('Track', ['$http', '$window', '$q', function ($http, $window, $q) {
+	app.factory('Track', ['$http', '$window', '$q', function ($http, $window, $q) {
 			return {
 				getAlbumTracks: getAlbumTracks
 			};

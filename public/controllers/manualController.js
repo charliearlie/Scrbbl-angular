@@ -1,5 +1,4 @@
-angular.module('Scrbbl')
-    .controller('ManualCtrl', ['$scope', '$alert', 'Authenticate', '$location', 'Scrobble', 'UserPersistence',
+app.controller('ManualCtrl', ['$scope', '$alert', 'Authenticate', '$location', 'Scrobble', 'UserPersistence',
         function ($scope, $alert, Authenticate, $location, Scrobble, UserPersistence) {
             if (UserPersistence.getCookieData()) {
                 Scrobble.getUserTopArtists()

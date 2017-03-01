@@ -1,6 +1,5 @@
 (function () {
-	angular.module('Scrbbl')
-		.factory('Scrobble', ['$http', '$window', '$q', 'UserPersistence', function ($http, $window, $q, UserPersistence) {
+	app.factory('Scrobble', ['$http', '$window', '$q', 'UserPersistence', function ($http, $window, $q, UserPersistence) {
 			
 			var user = UserPersistence.getCookieData();
 

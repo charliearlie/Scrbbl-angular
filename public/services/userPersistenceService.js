@@ -1,6 +1,5 @@
 (function () {
-    angular.module('Scrbbl')
-        .factory('UserPersistence', ['$cookies', function ($cookies) {
+    app.factory('UserPersistence', ['$cookies', function ($cookies) {
             var userName = "";
             var key = "";
 

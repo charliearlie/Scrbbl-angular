@@ -1,5 +1,4 @@
-angular.module('Scrbbl')
-    .factory('lastfmUser', ['$http', '$q', lastfmUserService]);
+app.factory('lastfmUser', ['$http', '$q', lastfmUserService]);
 
 function lastfmUserService($http, $q) {
 
