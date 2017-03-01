@@ -22,18 +22,16 @@
                 var user = {};
                 user.userName = $cookies.get("userName");
                 user.key = $cookies.get("key");
-                if (user.userName) {
-                    return user;
-                } else {
-                    return null;
-                }
+                return user.userName ? user : null;
             }
+
             function clearCookieData() {
                 userName = "";
                 key = "";
                 $cookies.remove("userName");
                 $cookies.remove("key");
             }
+            
             function getCookieKey() {
                 var key = null;
                 if ($cookies.get("key")) {
