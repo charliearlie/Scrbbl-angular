@@ -4,15 +4,15 @@
         <div class="page-header" id="banner">
             <div class="row">
                 <div class="col-lg-8 col-md-7 col-sm-6">
-                    <form class="form-horizontal" ng-if="!success && !loading">
+                    <form class="form-horizontal" ng-if="!success && !loading" name="albumform">
                         <fieldset>
 
                             <!-- Text input-->
                             <div class="form-group">
-                                <label class="col-md-2 control-label" for="songinput">Album Title</label>
+                                <label class="col-md-2 control-label" for="songinput">Album</label>
                                 <div class="col-md-8">
-                                    <input ng-model="album.title" id="songinput" name="songinput" type="text" placeholder="" class="form-control input-md">
-
+                                    <input ng-model="album.title" id="albumsearch" name="albumsearch" type="text" placeholder="" class="form-control input-md" ng-required="true">
+                                    <span ng-show="albumform.albumsearch.$error.required && albumform.albumsearch.$touched" style="color:#D32F2F">Search field required</span>
                                 </div>
                             </div>
 
@@ -20,7 +20,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="scrobblebutton"></label>
                                 <div class="col-md-8 buttonsubmit" ng-if="user">
-                                    <button id="searchbutton" name="searchbutton" class="btn btn-primary" ng-click="search()">Search</button>
+                                    <button id="searchbutton" name="searchbutton" class="btn btn-primary" ng-click="search()" ng-disabled="albumform.$invalid">Search</button>
                                 </div>
                                 <div class="col-md-8 buttonsubmit" ng-if="!user">
                                     <button id="loginbutton" name="loginbutton" class="btn btn-danger" ng-click="authenticate()">Login with Last.FM</button>

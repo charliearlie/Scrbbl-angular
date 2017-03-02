@@ -1,0 +1,69 @@
+<form class="form-horizontal" name="manualform" ng-if="!success && !loading">
+    <fieldset>
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="artistinput">Artist</label>
+            <div class="col-md-8">
+                <input ng-model="track.songArtist" id="artistinput" name="artistinput" type="text" placeholder="" class="form-control input-md"
+                    ng-required="true">
+                <span ng-show="(manualform.artistinput.$error.required && manualform.artistinput.$touched)" style="color:#D32F2F">Track artist is required</span>
+            </div>
+
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="songinput">Song Title</label>
+            <div class="col-md-8">
+                <input ng-model="track.songTitle" id="songinput" name="songinput" type="text" placeholder="" class="form-control input-md"
+                    ng-required="true">
+                <span ng-show="manualform.songinput.$error.required && manualform.songinput.$touched" style="color:#D32F2F">Track title is required</span>
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="albuminput">Album Title</label>
+            <div class="col-md-8">
+                <input ng-model="track.albumTitle" id="albuminput" name="albuminput" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="albumartistinput">Album Artist</label>
+            <div class="col-md-8">
+                <input ng-model="track.albumArtist" id="albumartistinput" name="albumartistinput" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="dateinput">Date (Optional)</label>
+            <div class="col-md-4">
+                <input ng-model="track.datePlayed" id="dateinput" name="dateinput" type="date" placeholder="" class="form-control input-md">
+
+            </div>
+            <div class="col-md-4">
+                <input ng-model="track.timePlayed" id="timeinput" name="timeinput" type="time" ng-if="track.datePlayed" class="form-control input-md">
+
+            </div>
+            <br><br>
+            <p style="font-size:12px">Date is currently Chrome only unless you want to format it yourself</p>
+        </div>
+
+        <!-- Button (Double) -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="scrobblebutton"></label>
+            <div class="col-md-8" ng-if="user">
+                <button id="scrobblebutton" name="scrobblebutton" class="btn btn-success" ng-click="scrobble()" ng-disabled="manualform.$invalid">Scrobble</button>
+                <button id="clearbutton" ng-click="clearForm()" name="clearbutton" class="btn btn-danger">Clear</button>
+            </div>
+            <div class="col-md-8" ng-if="!user">
+                <button id="loginbutton" name="loginbutton" class="btn btn-danger" ng-click="authenticate()">Login with Last.FM</button>
+            </div>
+        </div>
+
+    </fieldset>
+</form>

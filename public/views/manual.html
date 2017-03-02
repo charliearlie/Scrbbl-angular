@@ -10,17 +10,13 @@
                 <div class="col-lg-8 col-md-7 col-sm-6">
                     <form class="form-horizontal" name="manualform" ng-if="!success && !loading">
                         <fieldset>
-
                             <!-- Text input-->
                             <div class="form-group">
                                 <label class="col-md-2 control-label" for="artistinput">Artist</label>
                                 <div class="col-md-8">
-                                    <input ng-model="track.songArtist" id="artistinput" name="artistinput" type="text" placeholder="" class="form-control input-md" ng-required="true">
-
-                                </div>
-                                <div class="col-md-2" > <!--put this styling in css file-->
-                                    <span ng-show="manualform.$error.required" style="color:#D32F2F">required</span> 
-
+                                    <input ng-model="track.songArtist" id="artistinput" name="artistinput" type="text" placeholder="" class="form-control input-md"
+                                    ng-required="true">
+                                    <span ng-show="manualform.artistinput.$error.required && manualform.artistinput.$touched" style="color:#D32F2F">Track artist is required</span>
                                 </div>
                             </div>
 
@@ -28,11 +24,9 @@
                             <div class="form-group">
                                 <label class="col-md-2 control-label" for="songinput">Song Title</label>
                                 <div class="col-md-8">
-                                    <input ng-model="track.songTitle" id="songinput" name="songinput" type="text" placeholder="" class="form-control input-md">
-
-                                </div>
-                                <div class="col-md-2" > <!--put this styling in css file-->
-                                    <span ng-show="manualform.$error.required" style="color:#D32F2F">required</span> 
+                                    <input ng-model="track.songTitle" id="songinput" name="songinput" type="text" placeholder="" class="form-control input-md"
+                                        ng-required="true">
+                                    <span ng-show="manualform.songinput.$error.required && manualform.songinput.$touched" style="color:#D32F2F">Track title is required</span>
 
                                 </div>
                             </div>
@@ -64,7 +58,8 @@
                                     <input ng-model="track.timePlayed" id="timeinput" name="timeinput" type="time" ng-if="track.datePlayed" class="form-control input-md">
 
                                 </div>
-                                <br><br><p style="font-size:12px">Date is currently Chrome only unless you want to format it yourself</p>
+                                <br><br>
+                                <p style="font-size:12px">Date is currently Chrome only unless you want to format it yourself</p>
                             </div>
 
                             <!-- Button (Double) -->
@@ -72,7 +67,7 @@
                                 <label class="col-md-4 control-label" for="scrobblebutton"></label>
                                 <div class="col-md-8" ng-if="user">
                                     <button id="scrobblebutton" name="scrobblebutton" class="btn btn-success" ng-click="scrobble()" ng-disabled="manualform.$invalid">Scrobble</button>
-                                    <button id="clearbutton" ng-click="authenticate()" name="clearbutton" class="btn btn-danger">Clear</button>
+                                    <button id="clearbutton" ng-click="clearForm()" name="clearbutton" class="btn btn-danger">Clear</button>
                                 </div>
                                 <div class="col-md-8" ng-if="!user">
                                     <button id="loginbutton" name="loginbutton" class="btn btn-danger" ng-click="authenticate()">Login with Last.FM</button>
@@ -81,6 +76,7 @@
 
                         </fieldset>
                     </form>
+
 
                     <div ng-if="artistScrobbles">
                         <p>You have scrobbled {{track.songArtist}} {{artistScrobbles}} times</p>
