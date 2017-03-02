@@ -7134,3 +7134,7 @@ ul.chats li.out .message {
 #radio-track-date{
   font-size:0.85em;
 }
+
+input.ng-touched.ng-invalid {
+  border-color: #D32F2F;
+}

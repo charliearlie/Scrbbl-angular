@@ -41,5 +41,9 @@ app.controller('ManualCtrl', ['$scope', '$alert', 'Authenticate', '$location', '
 
                 });
             }, 1000), true);
+
+            $scope.clearForm = function() {
+                $scope.track = {};
+            }
         }]);
 }());
