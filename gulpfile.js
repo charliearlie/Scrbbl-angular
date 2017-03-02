@@ -19,10 +19,10 @@ gulp.task('sass', function() {
 gulp.task('compress', function() {
 	gulp.src([
 		'app.js',
-		'public/services/*.js',
-		'public/controllers/*.js',
-		'public/filters/*.js',
-		'public/directives/*.js'
+		'public/js/services/*.js',
+		'public/js/controllers/*.js',
+		'public/js/filters/*.js',
+		'public/js/directives/*.js'
 		
   	])
 	.pipe(babel({presets: ['es2015']}))
@@ -35,7 +35,7 @@ gulp.task('compress', function() {
 
 gulp.task('templates', function() {
   gulp.src('public/views/**/*.html')
-    .pipe(templateCache({ root: 'views', module: 'MyApp' }))
+    .pipe(templateCache({ root: 'views', module: 'Scrbbl' }))
     .pipe(gulp.dest('public'));
 });
 
