@@ -1,14 +1,26 @@
 'use strict';
 
 (function () {
-    app.factory('lastfmUser', ['$http', '$q', lastfmUserService]);
+    app.factory('LastfmUser', ['$http', '$q', lastfmUserService]);
 
     function lastfmUserService($http, $q) {
 
-        function getUserData() {
-            return $http.get('/api/user/getstuff')
+        return {
+            getUserData: getUserData
+        }
+
+        function getUserData(user) {
+            return $http.get('/api/user/getuserplays/' + user)
                 .then(sendResponseData)
                 .catch(sendResponseDataError);
+        }
+
+        function sendResponseData(response) {
+            return response.data.recenttracks.track
+        }
+
+        function sendResponseDataError(response) {
+            console.log(response);
         }
 
     }

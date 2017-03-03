@@ -7,7 +7,7 @@
 			};
 
 			function getStationPlays(station) {
-				return $http.get('/api/radio/getstationplays/' + station)
+				return $http.get('/api/user/getuserplays/' + station)
 					.then(function (response) {
 						return response.data.recenttracks.track
 					})

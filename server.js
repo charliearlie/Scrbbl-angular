@@ -57,10 +57,10 @@ app.get('/api/auth/:token', function (req, res, next) {
 	}
 });
 
-app.get('/api/radio/getstationplays/:station', function(req, res, next) {
-	var station = req.params.station;
+app.get('/api/user/getuserplays/:user', function(req, res, next) {
+	var user = req.params.user;
 	var str = '';
-	var uri = encodeURI(config.lastfm.hostname + '?method=user.getrecenttracks&user=' + station + 
+	var uri = encodeURI(config.lastfm.hostname + '?method=user.getrecenttracks&user=' + user + 
 		'&api_key=' + config.lastfm.key + '&format=json');
 	http.get(uri, function (response) {
 
@@ -73,7 +73,7 @@ app.get('/api/radio/getstationplays/:station', function(req, res, next) {
 				res.json(ret);
 			});
 		});
-	console.log(station);
+	console.log(user);
 });
 
 app.get('/api/albums/getalbuminfo/:collectionId', function(req, res, next) {

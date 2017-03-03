@@ -23,8 +23,8 @@ app.config(['$locationProvider', '$routeProvider', function ($locationProvider, 
                 controller: 'RadioCtrl'
             })
             .when('/scrobbleuser', {
-                templaterUrl: 'public/views/scrobbleuser.html',
-                controller: 'UserCtrl'
+                templateUrl: 'public/views/scrobbleuser.html',
+                controller: 'ScrobbleUserCtrl'
             })
             .otherwise({
                 redirectTo: '/'
