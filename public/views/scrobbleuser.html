@@ -11,7 +11,7 @@
                             <div class="form-group">
                                 <label class="col-md-2 control-label" for="songinput">User</label>
                                 <div class="col-md-8">
-                                    <input ng-model="lastfmUser" id="lastfmuserinput" name="lastfmuserinput" type="text" placeholder="" class="form-control input-md" ng-required="true">
+                                    <input id="lastfmuserinput" name="lastfmuserinput" type="text" ng-model="lastfmuser.name" class="form-control input-md" ng-required="true">
                                     <span ng-show="lastfmuserform.lastfmuserinput.$error.required && lastfmuserform.lastfmuserinput.$touched" style="color:#D32F2F">User field required</span>
                                 </div>
                             </div>
