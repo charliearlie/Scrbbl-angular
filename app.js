@@ -26,7 +26,18 @@ app.config(['$locationProvider', '$routeProvider', function ($locationProvider, 
                 templateUrl: 'public/views/scrobbleuser.html',
                 controller: 'ScrobbleUserCtrl'
             })
+            .when('/charts', {
+                templateUrl: 'public/views/charts.html',
+                controller: 'ChartCtrl'
+            })
+            .when('/fun', {
+                templateUrl: 'public/views/fun.html',
+                controller: 'FunCtrl'
+            })
+            .when('/404', {
+                templateUrl: 'public/views/404.html'
+            })
             .otherwise({
-                redirectTo: '/'
+                redirectTo: '/404'
             });
     }]);
