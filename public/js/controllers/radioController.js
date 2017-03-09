@@ -3,6 +3,7 @@
 (function () {
     app.controller('RadioCtrl', ['$scope', '$alert', 'Authenticate', '$location', 'Scrobble', 'Radio',
         function ($scope, $alert, Authenticate, $location, Scrobble, Radio) {
+            $scope.search = {};
             $scope.stations = [
                 {
                     "station": "Radio 1",
@@ -23,7 +24,7 @@
             ];
 
             $scope.getStationPlays = function () {
-                Radio.getStationPlays($scope.selectedStation)
+                Radio.getStationPlays($scope.search.selectedStation)
                     .then(function (tracks) {
                         $scope.results = _.map(tracks, function (track) {
                             return {
@@ -58,11 +59,17 @@
                     .then(function (result) {
                         $scope.success = result;
                         $scope.loading = false;
-                        $scope.results = {};
+                        $scope.results = null;
                         $scope.selectedAlbum = {};
                         $scope.album = {}; //Sort all this
                     });
             }
+
+            $scope.refreshForm = function () {
+                $scope.success = false;
+                $scope.search = {};
+
+            };
 
         }]);
 } ());

@@ -4,20 +4,20 @@
         <div class="page-header" id="banner">
             <div class="row">
                 <div class="col-lg-8 col-md-7 col-sm-6">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" ng-if="!success && !loading">
                         <fieldset>
 
                             <!-- Text input-->
                             <div class="form-group">
                                 <label class="col-md-2 control-label" for="songinput">Station</label>
                                 <div class="col-md-8">
-                                    <select style="width: 80%" ng-change="getStationPlays()" ng-model="selectedStation" 
+                                    <select style="width: 80%" ng-change="getStationPlays()" ng-model="search.selectedStation" 
                                                     ng-options="x.lastfmName as x.station for x in stations"></select>
 
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-md-8 buttonsubmit" ng-if="user">
+                                <div class="col-md-8 buttonsubmit" ng-if="user && results">
                                     <button id="radiobutton" name="radiobutton" class="btn btn-success formbutton" ng-click="scrobbleSelected()">Scrobble selected tracks</button>
                                 </div>
                                 <div class="col-md-8 buttonsubmit" ng-if="!user">
@@ -27,7 +27,13 @@
 
                         </fieldset>
                     </form>
-
+                    <div ng-if="success">
+                        <h4 ng-if="success">Tracks scrobbled successfully</h4>
+                        <button id="scrobbleagainbutton" name="srobbleagainbutton" class="btn btn-success" ng-click="refreshForm()">Scrobble another</button>
+                    </div>
+                    <div ng-if="loading">
+                        <div class="loader">Loading...</div>
+                    </div>
                 </div>
             </div>
 
