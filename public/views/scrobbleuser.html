@@ -19,8 +19,11 @@
                             <!-- Button (Double) -->
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="scrobblebutton"></label>
-                                <div class="col-md-8 buttonsubmit" ng-if="user">
+                                <div class="col-md-8 buttonsubmit" ng-if="user && !results">
                                     <button id="searchbutton" name="searchbutton" class="btn btn-primary" ng-click="searchUser()" ng-disabled="albumform.$invalid">Search</button>
+                                </div>
+                                <div class="col-md-8 buttonsubmit" ng-if="user && results">
+                                    <button id="radiobutton" name="radiobutton" class="btn btn-success formbutton" ng-click="scrobbleSelected()">Scrobble selected tracks</button>
                                 </div>
                                 <div class="col-md-8 buttonsubmit" ng-if="!user">
                                     <button id="loginbutton" name="loginbutton" class="btn btn-danger" ng-click="authenticate()">Login with Last.FM</button>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="Scrbbl" ng-cloak>
+
 <head>
     <base href="/">
     <title>Scrbbl</title>
@@ -8,22 +9,22 @@
             display:none;
         }
     </style>
-    <link rel="icon" href="public/images/favicon.ico"
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--Loading bootstrap css-->
-    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700">
-    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,700,300">
-    <link type="text/css" rel="stylesheet" href="public/stylesheets/jquery-ui-1.10.4.custom.min.css">
-    <link type="text/css" rel="stylesheet" href="public/stylesheets/bootstrap.min.css">
-    <link type="text/css" rel="stylesheet" href="public/stylesheets/animate.css">
-    <link type="text/css" rel="stylesheet" href="public/stylesheets/all.css">
-    <link type="text/css" rel="stylesheet" href="public/stylesheets/main.css">
-    <link type="text/css" rel="stylesheet" href="public/stylesheets/style-responsive.css">
-    <link type="text/css" rel="stylesheet" href="public/stylesheets/pace.css">
-    <script src="https://use.fontawesome.com/b14df16712.js"></script>
+<link rel="icon" href="public/images/favicon.ico" <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--Loading bootstrap css-->
+<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700">
+<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,700,300">
+<link type="text/css" rel="stylesheet" href="public/stylesheets/jquery-ui-1.10.4.custom.min.css">
+<link type="text/css" rel="stylesheet" href="public/stylesheets/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="public/stylesheets/animate.css">
+<link type="text/css" rel="stylesheet" href="public/stylesheets/all.css">
+<link type="text/css" rel="stylesheet" href="public/stylesheets/main.css">
+<link type="text/css" rel="stylesheet" href="public/stylesheets/style-responsive.css">
+<link type="text/css" rel="stylesheet" href="public/stylesheets/pace.css">
+<script src="https://use.fontawesome.com/b14df16712.js"></script>
 </head>
+
 <body ng-controller="LoginCtrl">
     <div>
         <!--BEGIN BACK TO TOP-->
@@ -60,8 +61,8 @@
 </nav>
 </div>
 <!--END TOPBAR-->
-        <div id="wrapper">
-            <!--BEGIN SIDEBAR MENU-->
+<div id="wrapper">
+    <!--BEGIN SIDEBAR MENU-->
     <nav id="sidebar" role="navigation" data-step="2" data-intro="Template has &lt;b&gt;many navigation styles&lt;/b&gt;" data-position="right"
         class="navbar-default navbar-static-side">
         <div class="sidebar-collapse menu-scroll">
@@ -101,7 +102,7 @@
                     </i><span class="menu-title">Charts</span></a>
 
                 </li>
-                
+
                 <li><a href="Tables.html"><i class="fa fa-smile-o fa-fw">
                         <div class="icon-bg bg-blue"></div>
                     </i><span class="menu-title">Fun</span></a>
@@ -111,84 +112,75 @@
         </div>
     </nav>
     <!--END SIDEBAR MENU-->
-          
-          
-            <div id="page-wrapper">
-                <!--BEGIN TITLE & BREADCRUMB PAGE-->
-                <!--<div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
-                    <div class="page-header pull-left">
-                        <div class="page-title">
-                            Home</div>
-                    </div>
-                    <div class="clearfix">
-                    </div>
-                </div>-->
-                <!--END TITLE & BREADCRUMB PAGE-->
 
-                <div ng-view></div>
 
-                <!--BEGIN FOOTER-->
-                <div id="footer">
-                    <div class="copyright">
-                        <a href="#">Charlie Waite (2017)</a></div>
-                </div>
-                <!--END FOOTER-->
-            </div>
-            <!--END PAGE WRAPPER-->
+    <div id="page-wrapper">
+
+        <div ng-view></div>
+
+        <!--BEGIN FOOTER-->
+        <div id="footer">
+            <div class="copyright">
+                <a href="#">Charlie Waite (2017)</a></div>
         </div>
+        <!--END FOOTER-->
     </div>
-    
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/angular-strap/dist/angular-strap.js"></script>
-    <script src="bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
-    <script src="bower_components/angular-messages/angular-messages.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/moment/moment.js"></script>
-    <script src="bower_components/lodash/dist/lodash.min.js"></script>
-    <script src="public/app.min.js"></script>
-    <script src="public/templates.js"></script>
-    <!--<script src="app.js"></script>
-    <script src="public/js/controllers/mainController.js"></script>
-    <script src="public/js/controllers/manualController.js"></script>
-    <script src="public/js/controllers/albumController.js"></script>
-    <script src="public/js/controllers/login.js"></script>
-    <script src="public/js/controllers/radioController.js"></script>
-    <script src="public/js/controllers/scrobbleUserController.js"></script>
-    <script src="public/js/services/authenticate.js"></script>
-    <script src="public/js/services/scrobble.js"></script>
-    <script src="public/js/services/userPersistenceService.js"></script>
-    <script src="public/js/services/radioService.js"></script>
-    <script src="public/js/services/trackService.js"></script>
-    <script src="public/js/services/lastfmUserService.js"></script>-->
-    <script src="public/externaljs/jquery-1.10.2.min.js"></script>
-    <script src="public/externaljs/jquery-migrate-1.2.1.min.js"></script>
-    <script src="public/externaljs/jquery-ui.js"></script>
-    <script src="public/externaljs/bootstrap.min.js"></script>
-    <script src="public/externaljs/bootstrap-hover-dropdown.js"></script>
-    <script src="public/externaljs/html5shiv.js"></script>
-    <script src="public/externaljs/respond.min.js"></script>
-    <script src="public/externaljs/jquery.metisMenu.js"></script>
-    <script src="public/externaljs/jquery.slimscroll.js"></script>
-    <script src="public/externaljs/jquery.cookie.js"></script>
-    <script src="public/externaljs/icheck.min.js"></script>
-    <script src="public/externaljs/custom.min.js"></script>
-    <script src="public/externaljs/jquery.menu.js"></script>
-    <script src="public/externaljs/main.js"></script>
-    <script src="public/externaljs/pace.min.js"></script>
-    <script src="public/externaljs/holder.js"></script>
-    <script src="public/externaljs/responsive-tabs.js"></script>
-    <script src="public/externaljs/jquery.flot.js"></script>
-    <script src="public/externaljs/jquery.flot.categories.js"></script>
-    <script src="public/externaljs/jquery.flot.pie.js"></script>
-    <script src="public/externaljs/jquery.flot.tooltip.js"></script>
-    <script src="public/externaljs/jquery.flot.resize.js"></script>
-    <script src="public/externaljs/jquery.flot.fillbetween.js"></script>
-    <script src="public/externaljs/jquery.flot.stack.js"></script>
-    <script src="public/externaljs/jquery.flot.spline.js"></script>
-    <script src="public/externaljs/index.js"></script>
-    <!--CORE JAVASCRIPT-->
-    
+    <!--END PAGE WRAPPER-->
+</div>
+</div>
+
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-strap/dist/angular-strap.js"></script>
+<script src="bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
+<script src="bower_components/angular-messages/angular-messages.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/moment/moment.js"></script>
+<script src="bower_components/lodash/dist/lodash.min.js"></script>
+<script src="public/app.min.js"></script>
+<script src="public/templates.js"></script>
+<script src="app.js"></script>
+<!--<script src="public/js/controllers/mainController.js"></script>
+<script src="public/js/controllers/manualController.js"></script>
+<script src="public/js/controllers/albumController.js"></script>
+<script src="public/js/controllers/login.js"></script>
+<script src="public/js/controllers/radioController.js"></script>
+<script src="public/js/controllers/scrobbleUserController.js"></script>
+<script src="public/js/services/authenticate.js"></script>
+<script src="public/js/services/scrobble.js"></script>
+<script src="public/js/services/userPersistenceService.js"></script>
+<script src="public/js/services/radioService.js"></script>
+<script src="public/js/services/trackService.js"></script>
+<script src="public/js/services/lastfmUserService.js"></script>-->
+<script src="public/externaljs/jquery-1.10.2.min.js"></script>
+<script src="public/externaljs/jquery-migrate-1.2.1.min.js"></script>
+<script src="public/externaljs/jquery-ui.js"></script>
+<script src="public/externaljs/bootstrap.min.js"></script>
+<script src="public/externaljs/bootstrap-hover-dropdown.js"></script>
+<script src="public/externaljs/html5shiv.js"></script>
+<script src="public/externaljs/respond.min.js"></script>
+<script src="public/externaljs/jquery.metisMenu.js"></script>
+<script src="public/externaljs/jquery.slimscroll.js"></script>
+<script src="public/externaljs/jquery.cookie.js"></script>
+<script src="public/externaljs/icheck.min.js"></script>
+<script src="public/externaljs/custom.min.js"></script>
+<script src="public/externaljs/jquery.menu.js"></script>
+<script src="public/externaljs/main.js"></script>
+<script src="public/externaljs/pace.min.js"></script>
+<script src="public/externaljs/holder.js"></script>
+<script src="public/externaljs/responsive-tabs.js"></script>
+<script src="public/externaljs/jquery.flot.js"></script>
+<script src="public/externaljs/jquery.flot.categories.js"></script>
+<script src="public/externaljs/jquery.flot.pie.js"></script>
+<script src="public/externaljs/jquery.flot.tooltip.js"></script>
+<script src="public/externaljs/jquery.flot.resize.js"></script>
+<script src="public/externaljs/jquery.flot.fillbetween.js"></script>
+<script src="public/externaljs/jquery.flot.stack.js"></script>
+<script src="public/externaljs/jquery.flot.spline.js"></script>
+<script src="public/externaljs/index.js"></script>
+<!--CORE JAVASCRIPT-->
+
 </body>
+
 </html>

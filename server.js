@@ -15,7 +15,6 @@ var http = require('http');
 var https = require('https');
 var compress = require('compression');
 var request = require('request');
-var crypto = require('crypto');
 var lastfm = new LastfmApi({
 	api_key: config.lastfm.key,
 	secret: config.lastfm.secret
@@ -195,7 +194,6 @@ app.get('/:token', function (req, res) {
 		console.log('We can see the token');
 	}
 	console.log("What is happening");
-	//res.sendFile(__dirname + '/index.html');
 });
 
 app.listen(app.get('port'), function () {
