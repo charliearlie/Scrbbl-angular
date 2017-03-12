@@ -7138,3 +7138,38 @@ ul.chats li.out .message {
 input.ng-touched.ng-invalid {
   border-color: #D32F2F;
 }
+
+.code-area {
+  position:absolute;
+  width: 320px;
+  min-width: 320px;
+  font-family: 'Courier new';
+  top:50%;
+  left:50%;
+  -webkit-transofrm: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-size:18px;
+  line-height:1.5em;
+  color: #777;
+  padding-top:200px;
+}
+
+.code-area > span {
+    display: block;
+}
+
+@media screen and (max-width: 320px) {
+    .code-area {
+		font-size: 5vw;
+		min-width: auto;
+        width: 95%;
+		margin: auto;
+		padding: 5px;
+		padding-left: 10px;
+		line-height: 6.5vw;
+    }
+}
+
+.notfound {
+  background-color: #f0f2f5;
+}
