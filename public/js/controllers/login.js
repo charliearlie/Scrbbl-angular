@@ -10,11 +10,13 @@
             if (param && param != 'undefined' && !UserPersistence.getCookieData()) {
                 Authenticate.createSession(param).then(function (result) {
                     $scope.user = {};
-                    $scope.user.username = result.data.username;
+                    $scope.user.userName = result.data.username;
                     $scope.user.key = result.data.key;
                     UserPersistence.setCookieData($scope.user);
                 });;
             }
+
+            console.log($scope.user);
 
             $scope.authenticate = function () {
                 console.log("clicked");

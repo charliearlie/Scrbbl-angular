@@ -13,7 +13,7 @@
         };
 
         function setCookieData(user) {
-            userName = user.username;
+            userName = user.userName;
             key = user.key;
             $cookies.put("userName", userName);
             $cookies.put("key", key);

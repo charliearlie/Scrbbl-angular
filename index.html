@@ -75,38 +75,34 @@
                 <li data-match-route="/manual"> <a href="/manual"><i class="fa fa-lastfm fa-fw">
                         <div class="icon-bg bg-pink"></div>
                     </i><span class="menu-title">Scrobble Manually</span></a>
-
                 </li>
                 <li data-match-route="/scrobblealbum"><a href="/scrobblealbum"><i class="fa fa-book fa-fw">
                         <div class="icon-bg bg-green"></div>
                     </i><span class="menu-title">Scrobble album</span></a>
-
                 </li>
                 <li data-match-route="/scrobbleradio"><a href="/scrobbleradio"><i class="fa fa-music fa-fw">
                         <div class="icon-bg bg-yellow"></div>
                     </i><span class="menu-title">Scrobble radio</span></a>
-
                 </li>
                 <li><a href="DataGrid.html"><i class="fa fa-database fa-fw">
                         <div class="icon-bg bg-red"></div>
                     </i><span class="menu-title">Scrobble from database</span></a>
-
                 </li>
                 <li data-match-route="/scrobbleuser"><a href="/scrobbleuser"><i class="fa fa-user fa-fw">
                         <div class="icon-bg bg-yellow"></div>
                     </i><span class="menu-title">Scrobble from user</span></a>
-
                 </li>
                 <li><a href="Forms.html"><i class="fa fa-bar-chart fa-fw">
                         <div class="icon-bg bg-violet"></div>
                     </i><span class="menu-title">Charts</span></a>
-
                 </li>
-
                 <li><a href="Tables.html"><i class="fa fa-smile-o fa-fw">
                         <div class="icon-bg bg-blue"></div>
                     </i><span class="menu-title">Fun</span></a>
-
+                </li>
+                <li ng-if="user.userName === 'Charliearlie90' || user.userName === 'kyro7'"data-match-route="/albumaday"><a href="/albumaday"><i class="fa fa-calendar-times-o fa-fw">
+                        <div class="icon-bg bg-blue"></div>
+                    </i><span class="menu-title">Album a day</span></a>
                 </li>
             </ul>
         </div>
@@ -138,10 +134,10 @@
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/moment/moment.js"></script>
 <script src="bower_components/lodash/dist/lodash.min.js"></script>
-<script src="public/app.min.js"></script>
-<script src="public/templates.js"></script>
+<!--<script src="public/app.min.js"></script>
+<script src="public/templates.js"></script>-->
 <script src="app.js"></script>
-<!--<script src="public/js/controllers/mainController.js"></script>
+<script src="public/js/controllers/mainController.js"></script>
 <script src="public/js/controllers/manualController.js"></script>
 <script src="public/js/controllers/albumController.js"></script>
 <script src="public/js/controllers/login.js"></script>
@@ -152,7 +148,7 @@
 <script src="public/js/services/userPersistenceService.js"></script>
 <script src="public/js/services/radioService.js"></script>
 <script src="public/js/services/trackService.js"></script>
-<script src="public/js/services/lastfmUserService.js"></script>-->
+<script src="public/js/services/lastfmUserService.js"></script>
 <script src="public/externaljs/jquery-1.10.2.min.js"></script>
 <script src="public/externaljs/jquery-migrate-1.2.1.min.js"></script>
 <script src="public/externaljs/jquery-ui.js"></script>
