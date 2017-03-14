@@ -56,6 +56,26 @@ app.get('/api/auth/:token', function (req, res, next) {
 	}
 });
 
+app.get('/api/user/getusertopartists', function(req, res, next) {
+	var user = req.headers.user;
+	var str = '';
+	var uri = encodeURI(config.lastfm.hostname + '?method=user.gettopartists&user=' + user + 
+		'&api_key=' + config.lastfm.key + '&format=json');
+
+	http.get(uri, function(response) {
+		response.on('data', function(chunk) {
+			str += chunk;
+		});
+
+		response.on('end', function() {
+			ret = JSON.parse(str);
+			console.log(ret);
+			console.log(str);
+			res.json(ret);
+		});
+	})
+})
+
 app.get('/api/user/getuserplays/:user', function(req, res, next) {
 	var user = req.params.user;
 	var str = '';
