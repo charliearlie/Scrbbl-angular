@@ -1,14 +1,14 @@
 'use strict';
 
 (function () {
-    app.controller('LoginCtrl', ['$scope', '$alert', 'Authenticate', '$location', 'UserPersistence',
-        function ($scope, $alert, Authenticate, $location, UserPersistence) {
+    app.controller('LoginCtrl', ['$scope', '$alert', 'LastfmUser', '$location', 'UserPersistence',
+        function ($scope, $alert, LastfmUser, $location, UserPersistence) {
             if (UserPersistence.getCookieData()) {
                 $scope.user = UserPersistence.getCookieData();
             }
             var param = $location.search().token;
             if (param && param != 'undefined' && !UserPersistence.getCookieData()) {
-                Authenticate.createSession(param).then(function (result) {
+                LastfmUser.createSession(param).then(function (result) {
                     $scope.user = {};
                     $scope.user.userName = result.data.username;
                     $scope.user.key = result.data.key;
@@ -20,7 +20,7 @@
 
             $scope.authenticate = function () {
                 console.log("clicked");
-                Authenticate.login();
+                LastfmUser.login();
             };
 
             $scope.logout = function () {

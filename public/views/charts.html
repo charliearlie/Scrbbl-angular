@@ -1,8 +1,18 @@
-<div class="jumbotron notfound">
-    <div class="container">
-        <h1>Hello</h1>
-        <div ng-repeat="artist in topArtists">
-            <p>{{artist.name}} <span> Plays: {{artist.playcount}}</span></p>
+<div class="jumbotron charts">
+    <div class="row">
+        <div class="artist-header col-lg-6">
+            <div class="image col-lg-3">
+                <img src="{{topArtists[0].image[2]['#text']}}" />
+            </div>
+            <div class="header col-lg-9">
+                <div class="row">
+                    <h3>Top Artist</h3>
+                </div>
+                <div class="row">
+                    <h2>{{topArtists[0].name}}</h2>
+                    <p>Plays: {{topArtists[0].playcount}}</p>
+                </div>
+            </div>
         </div>
     </div>
 </div>

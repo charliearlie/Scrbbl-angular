@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
 .icon-spin {
   display: inline-block;
   -moz-animation: spin 2s infinite linear;
@@ -7172,4 +7174,30 @@ input.ng-touched.ng-invalid {
 
 .notfound {
   background-color: #f0f2f5;
+}
+
+.charts {
+  padding: 20px;
+  margin: 5px 0 5px 25px;
+}
+
+.artist-header {
+  background-color:white;
+  border-radius:15px;
+  box-shadow: 5px 5px 2px #3d4745;
+  font-family: 'Montserrat', sans-serif;
+  padding:10px;
+}
+
+.artist-header h3 {
+  color: #757575;
+}
+
+.artist-header h2 {
+  font-style: bold;
+  color: #212121;
+}
+
+.artist-header .image img {
+  border-radius:50%
 }
